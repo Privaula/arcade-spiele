@@ -43,7 +43,7 @@ public class Main extends JFrame{
 			JButton imageButton = new JButton("Schere Stein Papier (Bild kann nicht geladen werden)", x);
 			imageButton.setRolloverIcon(y);
 			
-			imageButton.setBounds(150, 150, 306, 306);
+			imageButton.setBounds(150, 150, 150, 150);
 			JLabel myLabel;
 			ImageIcon bg = new ImageIcon("C:\\Users\\Julian\\Downloads\\coin-4180241_1280.jpg");
 			myLabel = new JLabel(bg);
@@ -95,4 +95,3 @@ public class Main extends JFrame{
 		
 		
 	}
-
