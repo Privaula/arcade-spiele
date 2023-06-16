@@ -8,6 +8,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.GroupLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -55,8 +56,10 @@ public class zahlenguesser extends JFrame {
 		
 		
 		//Background
-		ImageIcon bg = new ImageIcon("C:\\Users\\Julian\\Downloads\\coin-4180241_1280.jpg");
-		JLabel myLabel = new JLabel(bg);
+		
+		java.net.URL backgroundURL = Main.class.getResource("pictures\\background.jpg");
+		ImageIcon background = new ImageIcon(backgroundURL);
+		JLabel myLabel = new JLabel(background);
 		myLabel.setSize(1280, 720);
 		
 		//Text Anzeige
