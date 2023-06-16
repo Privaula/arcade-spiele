@@ -30,7 +30,7 @@ public class memory extends JFrame {
 			
 			
 			JButton endeButton = new JButton("Ende");
-			endeButton.setBounds(30, 40, 70, 50);
+			endeButton.setBounds(30, 40, 100, 70);
 			endeButton.addActionListener(new ActionListener() {
 				
 				@Override
