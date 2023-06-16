@@ -25,7 +25,7 @@ public class Main extends JFrame{
 
 		public Main()
 		{
-			setTitle("Tolle GUI");
+			setTitle("Arcade Spiele - Main Menu");
 			setSize(1280, 720);
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -39,7 +39,7 @@ public class Main extends JFrame{
 			
 			//Aman Jonas Button
 			JButton memoryButton = new JButton("aman jonas memory");
-			memoryButton.setBounds(400, 200, 150, 150);
+			memoryButton.setBounds(420, 220, 200, 200);
 			memoryButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -49,12 +49,12 @@ public class Main extends JFrame{
 			});
 			
 			//Zahlenguesser Button
-			ImageIcon x = new ImageIcon("C:\\Users\\Julian\\Downloads\\istockphoto-1056840214-612x612.jpg");
-			ImageIcon y = new ImageIcon("H:\\Bilder\\Fußball\\Download.png");
-			JButton imageButton = new JButton("Schere Stein Papier (Bild kann nicht geladen werden)", x);
-			imageButton.setRolloverIcon(y);
+			ImageIcon zahlenguesserIcon = new ImageIcon("C:\\Users\\Julian\\eclipse-workspace\\arcade-spiele\\src\\zahlenguesser.png");
+			ImageIcon zahlenguesserAltIcon = new ImageIcon("C:\\Users\\Julian\\eclipse-workspace\\arcade-spiele\\src\\zahlenguesseralt.png");
+			JButton zahlenguesserButton = new JButton(zahlenguesserIcon);
+			zahlenguesserButton.setRolloverIcon(zahlenguesserAltIcon);
 			
-			imageButton.setBounds(150, 200, 150, 150);
+			zahlenguesserButton.setBounds(170, 220, 200, 200);
 			JLabel myLabel;
 			ImageIcon bg = new ImageIcon("C:\\Users\\Julian\\Downloads\\coin-4180241_1280.jpg");
 			myLabel = new JLabel(bg);
@@ -72,12 +72,12 @@ public class Main extends JFrame{
 				}
 			});
 			
-			imageButton.addActionListener(new ActionListener() {
+			zahlenguesserButton.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					System.out.println("ja");
+					
 					zahlenguesser.zahlenguesser();
 					
 					JFrame jf = new zahlenguesser();
@@ -85,7 +85,6 @@ public class Main extends JFrame{
 				}
 			});
 
-			
 			//Layout
 			Container pane = getContentPane();
 			GroupLayout gl = new GroupLayout(pane);
@@ -93,7 +92,7 @@ public class Main extends JFrame{
 			pane.add(memoryButton);
 			pane.add(titlePanel);
 			pane.add(button);
-			pane.add(imageButton);
+			pane.add(zahlenguesserButton);
 			pane.add(myLabel);
 			
 			
