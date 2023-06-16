@@ -62,7 +62,7 @@ public class Main extends JFrame{
 			
 			//Endebutton
 			JButton button = new JButton("Ende");
-			button.setBounds(30, 40, 70, 50);
+			button.setBounds(30, 40, 100, 70);
 			button.addActionListener(new ActionListener() {
 				
 				@Override
