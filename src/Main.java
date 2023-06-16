@@ -31,7 +31,8 @@ public class Main extends JFrame{
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 	
 			//Titel Arcade Spiele
-			ImageIcon titlePicture = new ImageIcon("C:\\Users\\Julian\\eclipse-workspace\\arcade-spiele\\src\\Title.png");
+			java.net.URL titlePictureURL = getClass().getResource("pictures\\Title.png");
+			ImageIcon titlePicture = new ImageIcon(titlePictureURL);
 			JLabel title = new JLabel(titlePicture);
 			JPanel titlePanel = new JPanel();
 			titlePanel.add(title);
@@ -49,15 +50,19 @@ public class Main extends JFrame{
 			});
 			
 			//Zahlenguesser Button
-			ImageIcon zahlenguesserIcon = new ImageIcon("C:\\Users\\Julian\\eclipse-workspace\\arcade-spiele\\src\\zahlenguesser.png");
-			ImageIcon zahlenguesserAltIcon = new ImageIcon("C:\\Users\\Julian\\eclipse-workspace\\arcade-spiele\\src\\zahlenguesseralt.png");
+			java.net.URL zahlenguesserIconURL = getClass().getResource("pictures\\zahlenguesser.png");
+			ImageIcon zahlenguesserIcon = new ImageIcon(zahlenguesserIconURL);
+			
+			java.net.URL zahlenguesserAltIconURL = getClass().getResource("pictures\\zahlenguesseralt.png");
+			ImageIcon zahlenguesserAltIcon = new ImageIcon(zahlenguesserAltIconURL);
 			JButton zahlenguesserButton = new JButton(zahlenguesserIcon);
 			zahlenguesserButton.setRolloverIcon(zahlenguesserAltIcon);
 			
 			zahlenguesserButton.setBounds(170, 220, 200, 200);
 			JLabel myLabel;
-			ImageIcon bg = new ImageIcon("C:\\Users\\Julian\\Downloads\\coin-4180241_1280.jpg");
-			myLabel = new JLabel(bg);
+			java.net.URL backgroundURL = getClass().getResource("pictures\\background.jpg");
+			ImageIcon background = new ImageIcon(backgroundURL);
+			myLabel = new JLabel(background);
 			myLabel.setSize(1280, 720);
 			
 			//Endebutton
