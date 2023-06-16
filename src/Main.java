@@ -59,11 +59,18 @@ public class Main extends JFrame{
 			zahlenguesserButton.setRolloverIcon(zahlenguesserAltIcon);
 			
 			zahlenguesserButton.setBounds(170, 220, 200, 200);
+			
+			 //Background
 			JLabel myLabel;
 			java.net.URL backgroundURL = getClass().getResource("pictures\\background.jpg");
 			ImageIcon background = new ImageIcon(backgroundURL);
 			myLabel = new JLabel(background);
 			myLabel.setSize(1280, 720);
+			
+			//ICON
+			java.net.URL taskbarIconURL = Main.class.getResource("pictures\\taskbarIcon.png");
+			ImageIcon taskbarIcon = new ImageIcon(taskbarIconURL);
+			setIconImage(taskbarIcon.getImage());
 			
 			//Endebutton
 			JButton button = new JButton("Ende");
