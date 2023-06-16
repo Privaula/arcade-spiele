@@ -62,6 +62,11 @@ public class zahlenguesser extends JFrame {
 		JLabel myLabel = new JLabel(background);
 		myLabel.setSize(1280, 720);
 		
+		//ICON
+		java.net.URL taskbarIconURL = Main.class.getResource("pictures\\taskbarIcon.png");
+		ImageIcon taskbarIcon = new ImageIcon(taskbarIconURL);
+		jf.setIconImage(taskbarIcon.getImage());
+		
 		//Text Anzeige
 		String text = "Bitte geben Sie eine Zahl von 1-100 ein";
 		JLabel numberLabel = new JLabel(text);
