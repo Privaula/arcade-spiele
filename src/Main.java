@@ -37,13 +37,24 @@ public class Main extends JFrame{
 			titlePanel.add(title);
 			titlePanel.setBounds(300, 20, 600, 100);
 			
-			//Testbutton
+			//Aman Jonas Button
+			JButton memoryButton = new JButton("aman jonas memory");
+			memoryButton.setBounds(400, 200, 150, 150);
+			memoryButton.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					memory.memory();
+				}
+			});
+			
+			//Zahlenguesser Button
 			ImageIcon x = new ImageIcon("C:\\Users\\Julian\\Downloads\\istockphoto-1056840214-612x612.jpg");
 			ImageIcon y = new ImageIcon("H:\\Bilder\\Fußball\\Download.png");
 			JButton imageButton = new JButton("Schere Stein Papier (Bild kann nicht geladen werden)", x);
 			imageButton.setRolloverIcon(y);
 			
-			imageButton.setBounds(150, 150, 150, 150);
+			imageButton.setBounds(150, 200, 150, 150);
 			JLabel myLabel;
 			ImageIcon bg = new ImageIcon("C:\\Users\\Julian\\Downloads\\coin-4180241_1280.jpg");
 			myLabel = new JLabel(bg);
@@ -65,10 +76,9 @@ public class Main extends JFrame{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
 					setVisible(false);
 					System.out.println("ja");
-					zahlenguesser.lul();
+					zahlenguesser.zahlenguesser();
 					
 					JFrame jf = new zahlenguesser();
 					
@@ -80,6 +90,7 @@ public class Main extends JFrame{
 			Container pane = getContentPane();
 			GroupLayout gl = new GroupLayout(pane);
 			pane.setLayout(null);
+			pane.add(memoryButton);
 			pane.add(titlePanel);
 			pane.add(button);
 			pane.add(imageButton);
@@ -95,3 +106,4 @@ public class Main extends JFrame{
 		
 		
 	}
+
