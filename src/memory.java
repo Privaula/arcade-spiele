@@ -39,6 +39,10 @@ public class memory extends JFrame {
 				}
 			});
 			
+			//ICON
+			java.net.URL taskbarIconURL = Main.class.getResource("pictures\\taskbarIcon.png");
+			ImageIcon taskbarIcon = new ImageIcon(taskbarIconURL);
+			jf.setIconImage(taskbarIcon.getImage());
 			
 			
 			GroupLayout gl = new GroupLayout(jf);
