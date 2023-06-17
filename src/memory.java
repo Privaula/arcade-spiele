@@ -38,7 +38,21 @@ public class memory extends JFrame {
 					System.exit(0);	
 				}
 			});
-			
+
+
+					//Zurück Button
+			JButton zurückButton = new JButton("Zurück");
+			zurückButton.setBounds(140, 40, 100, 70);
+			zurückButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Main.main(null);
+				jf.setVisible(false);
+			}
+			});
+
+
+
 			//ICON
 			java.net.URL taskbarIconURL = Main.class.getResource("pictures\\taskbarIcon.png");
 			ImageIcon taskbarIcon = new ImageIcon(taskbarIconURL);
@@ -51,5 +65,6 @@ public class memory extends JFrame {
 			
 			//add to jf
 			jf.add(endeButton);
+			jf.add(zurückButton);
 		}
 }
