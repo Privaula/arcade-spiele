@@ -3,6 +3,8 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Main extends JFrame{
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable()  {
@@ -22,9 +25,14 @@ public class Main extends JFrame{
 			}
 		});
 		}
-
+	
+		//Variablen
+		public static int buttonBreite = 110;
+		public static int buttonHöhe = 85;
+		
 		public Main()
 		{
+			//JFrame erstellen
 			setTitle("Arcade Spiele - Main Menu");
 			setSize(1280, 720);
 			setLocationRelativeTo(null);
@@ -57,10 +65,32 @@ public class Main extends JFrame{
 			ImageIcon zahlenguesserAltIcon = new ImageIcon(zahlenguesserAltIconURL);
 			JButton zahlenguesserButton = new JButton(zahlenguesserIcon);
 			zahlenguesserButton.setRolloverIcon(zahlenguesserAltIcon);
-			
 			zahlenguesserButton.setBounds(170, 220, 200, 200);
+			zahlenguesserButton.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					zahlenguesser.zahlenguesser();
+					JFrame jf = new zahlenguesser();	
+				}
+			});
 			
-			 //Background
+			
+			//Rock Paper Scissors Button
+			java.net.URL rpsIconURL = getClass().getResource("pictures\\rps.jpg");
+			ImageIcon rpsIcon = new ImageIcon(rpsIconURL);
+			JButton rpsButton = new JButton(rpsIcon);
+			rpsButton.setBounds(670, 220, 200, 200);
+			rpsButton.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					rps.rps();
+				}
+			});
+			
+			
+			//Background
 			JLabel myLabel;
 			java.net.URL backgroundURL = getClass().getResource("pictures\\background.jpg");
 			ImageIcon background = new ImageIcon(backgroundURL);
@@ -74,9 +104,8 @@ public class Main extends JFrame{
 			
 			//Endebutton
 			JButton button = new JButton("Ende");
-			button.setBounds(30, 40, 100, 70);
+			button.setBounds(20, 20, buttonBreite, buttonHöhe);
 			button.addActionListener(new ActionListener() {
-				
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					System.exit(0);
@@ -84,23 +113,13 @@ public class Main extends JFrame{
 				}
 			});
 			
-			zahlenguesserButton.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					
-					zahlenguesser.zahlenguesser();
-					
-					JFrame jf = new zahlenguesser();
-					
-				}
-			});
+			
 
 			//Layout
 			Container pane = getContentPane();
 			GroupLayout gl = new GroupLayout(pane);
 			pane.setLayout(null);
+			pane.add(rpsButton);
 			pane.add(memoryButton);
 			pane.add(titlePanel);
 			pane.add(button);
