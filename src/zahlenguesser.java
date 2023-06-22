@@ -18,13 +18,16 @@ import javax.swing.JTextField;
 
 public class zahlenguesser extends JFrame {
 	
+	//Variablen
+	static int buttonBreite = Main.buttonBreite;
+	static int buttonHöhe = Main.buttonHöhe;
 	
 	public static void zahlenguesser() {
 
 		int random = (int)(Math.random() * 100);
 		System.out.println(random);
 		
-		
+		//JFrame erstellen
 		JFrame jf = new JFrame();
 		jf.setTitle("Arcade Spiele - Zahlenguesser");
 		jf.setSize(1280, 720);
@@ -32,9 +35,13 @@ public class zahlenguesser extends JFrame {
 		jf.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		jf.setVisible(true);
 		
+		//Schriftarten
+				Font schrift = new Font ("Rockwell", Font.PLAIN , 50);
+				Font eingabeSchrift = new Font("Rockwell", Font.BOLD, 120);
+		
 		//Zurück Button
 		JButton zurückButton = new JButton("Zurück");
-		zurückButton.setBounds(140, 40, 100, 70);
+		zurückButton.setBounds(20, 20, buttonBreite, buttonHöhe);
 		zurückButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -45,7 +52,7 @@ public class zahlenguesser extends JFrame {
 		
 		//Ende Button
 		JButton endeButton = new JButton("Ende");
-		endeButton.setBounds(30, 40, 100, 70);
+		endeButton.setBounds(20, 20, 100, 70);
 		endeButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -75,8 +82,10 @@ public class zahlenguesser extends JFrame {
 		numberLabel.setOpaque(true);
 		numberLabel.setSize(900, 70);
 		numberLabel.setLocation(150, 120);
-		Font schrift = new Font ("Rockwell", Font.PLAIN , 50);
 		numberLabel.setFont(schrift);
+		
+		
+		
 		
 		String hilfe ="Hier wird ein Tipp erscheinen";
 		JLabel hilfeLabel = new JLabel(hilfe);
@@ -91,7 +100,7 @@ public class zahlenguesser extends JFrame {
 		String guess;
 		JTextField tfEingabe = new JTextField(null, random);
 		tfEingabe.setBounds(400, 300, 250, 200);
-		tfEingabe.setFont(schrift);
+		tfEingabe.setFont(eingabeSchrift);
 		tfEingabe.addKeyListener(new KeyAdapter() {
 	         public void keyPressed(KeyEvent ke) {
 	            String guess = tfEingabe.getText();
@@ -138,7 +147,6 @@ public class zahlenguesser extends JFrame {
 		jf.add(zurückButton);
 		jf.add(enter);
 		jf.add(tfEingabe);
-		jf.add(endeButton);
 		jf.add(hilfeLabel);
 		jf.add(numberLabel);
 		jf.add(myLabel);
