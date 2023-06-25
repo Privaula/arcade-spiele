@@ -96,6 +96,7 @@ public class zahlenguesser extends JFrame {
 		hilfeLabel.setLocation(150, 210);
 		hilfeLabel.setFont(schrift);
 		
+
 		//Eingabefeld
 		String guess;
 		JTextField tfEingabe = new JTextField(null, random);
@@ -105,15 +106,31 @@ public class zahlenguesser extends JFrame {
 	         public void keyPressed(KeyEvent ke) {
 	            String guess = tfEingabe.getText();
 	            int l = guess.length();
-	            if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+	            char k = 0;
+				if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
 	               tfEingabe.setEditable(true);
 	               numberLabel.setText(text);
-	            } else {
+	            } 
+	            else {
 	               tfEingabe.setEditable(false);
 	               numberLabel.setText("Nur Zahlen einfügen(0-9)");
 	            }
 	         }
 	      });
+		
+		//nochmal Button
+		JButton nochmalButton = new JButton("Nochmal spielen!");
+		nochmalButton.setBounds(240, 360, 140, buttonHöhe);
+		nochmalButton.setVisible(false);
+		nochmalButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				jf.setVisible(false);
+				zahlenguesser.zahlenguesser();
+			}
+		});
+		
 		
 		
 		//der Button
@@ -128,7 +145,8 @@ public class zahlenguesser extends JFrame {
 				
 				if(convertGuess == random) {convertGuess = 0;
 											tfEingabe.setText(null);
-											hilfeLabel.setText("Sie haben die Zahl erraten!");}
+											hilfeLabel.setText("Sie haben die Zahl erraten!");
+											nochmalButton.setVisible(true);}
 				if(convertGuess > random && convertGuess > 0) { hilfeLabel.setText("Die Zahl ist kleiner");
 											convertGuess = 0;
 											tfEingabe.setText(null);}
@@ -143,7 +161,7 @@ public class zahlenguesser extends JFrame {
 		});
 		
 		//add to jf
-		
+		jf.add(nochmalButton);
 		jf.add(zurückButton);
 		jf.add(enter);
 		jf.add(tfEingabe);
