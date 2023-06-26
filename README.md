@@ -6,3 +6,6 @@ If you have any questions contact me on Discord: "privaula"
 If the project is finished I will put anything up here and make a download available.
 If any there are any problems concerning Copyright © just contact me and we will change it.
 Have a good day!
+
+## Screenshots
+![ingame-snapshot-rps](https://github.com/Privaula/arcade-spiele/assets/43094366/d04fe488-3d27-442a-aa26-7ab6d4eccec7)
