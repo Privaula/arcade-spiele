@@ -49,7 +49,7 @@ public class zahlenguesser extends JFrame {
 				jf.setVisible(false);
 			}
 		});
-		
+		/*
 		//Ende Button
 		JButton endeButton = new JButton("Ende");
 		endeButton.setBounds(20, 20, 100, 70);
@@ -60,7 +60,7 @@ public class zahlenguesser extends JFrame {
 				System.exit(0);	
 			}
 		});
-		
+		*/
 		
 		//Background
 		
