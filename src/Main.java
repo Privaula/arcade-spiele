@@ -40,11 +40,17 @@ public class Main extends JFrame{
 	
 			//Titel Arcade Spiele
 			java.net.URL titlePictureURL = getClass().getResource("pictures\\Title.png");
+
+			
+			
 			ImageIcon titlePicture = new ImageIcon(titlePictureURL);
 			JLabel title = new JLabel(titlePicture);
 			JPanel titlePanel = new JPanel();
 			titlePanel.add(title);
 			titlePanel.setBounds(300, 20, 600, 100);
+			
+			
+			
 			
 			//Aman Jonas Button
 			JButton memoryButton = new JButton("aman jonas memory");
@@ -76,8 +82,16 @@ public class Main extends JFrame{
 			});
 			
 			
+			
+			
+			
+			
+			
+			
 			//Rock Paper Scissors Button
-			java.net.URL rpsIconURL = getClass().getResource("pictures\\rps.jpg");
+			java.net.URL rpsIconURL = getClass().getResource("pictures\\zahlenguesser.png");
+			System.out.println(rpsIconURL.toExternalForm());
+			
 			ImageIcon rpsIcon = new ImageIcon(rpsIconURL);
 			JButton rpsButton = new JButton(rpsIcon);
 			rpsButton.setBounds(670, 220, 200, 200);
@@ -88,6 +102,32 @@ public class Main extends JFrame{
 					rps.rps();
 				}
 			});
+			
+			
+			
+			//TicTacToe Button
+			java.net.URL ticTacToeIconURL = getClass().getResource("pictures\\zahlenguesser.png");
+			ImageIcon ticTacToeIcon = new ImageIcon(ticTacToeIconURL);
+			
+			//java.net.URL zahlenguesserAltIconURL = getClass().getResource("pictures\\zahlenguesseralt.png");
+			//ImageIcon zahlenguesserAltIcon = new ImageIcon(zahlenguesserAltIconURL);
+			JButton ticTacToeButton = new JButton(ticTacToeIcon);
+			//zahlenguesserButton.setRolloverIcon(zahlenguesserAltIcon);
+			ticTacToeButton.setBounds(930, 220, 200, 200);
+			ticTacToeButton.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					ticTacToe.ticTacToe();
+					JFrame jf = new ticTacToe();	
+				}
+			});
+			
+			
+			
+			
+			
+			
 			
 			
 			//Background
@@ -114,7 +154,11 @@ public class Main extends JFrame{
 			});
 			
 			
-
+			
+			
+			
+			
+			
 			//Layout
 			Container pane = getContentPane();
 			GroupLayout gl = new GroupLayout(pane);
@@ -124,6 +168,7 @@ public class Main extends JFrame{
 			pane.add(titlePanel);
 			pane.add(button);
 			pane.add(zahlenguesserButton);
+			pane.add(ticTacToeButton);
 			pane.add(myLabel);
 			
 			
@@ -136,4 +181,5 @@ public class Main extends JFrame{
 		
 		
 	}
+
 
