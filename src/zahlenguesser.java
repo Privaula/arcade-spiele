@@ -21,6 +21,7 @@ public class zahlenguesser extends JFrame {
 	//Variablen
 	static int buttonBreite = Main.buttonBreite;
 	static int buttonHöhe = Main.buttonHöhe;
+	static int versuche = 0;
 	
 	public static void zahlenguesser() {
 
@@ -128,6 +129,7 @@ public class zahlenguesser extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				jf.setVisible(false);
 				zahlenguesser.zahlenguesser();
+				versuche = 0;
 			}
 		});
 		
@@ -142,11 +144,13 @@ public class zahlenguesser extends JFrame {
 				String guess = tfEingabe.getText();
 				int convertGuess = Integer.parseInt(guess);
 				System.out.println(convertGuess);
+				versuche++;
 				
 				if(convertGuess == random) {convertGuess = 0;
 											tfEingabe.setText(null);
-											hilfeLabel.setText("Sie haben die Zahl erraten!");
-											nochmalButton.setVisible(true);}
+											hilfeLabel.setText("Sie haben die Zahl mit "+  versuche +" Versuchen erraten!");
+											nochmalButton.setVisible(true);
+											hilfeLabel.setSize(1070,70);}
 				if(convertGuess > random && convertGuess > 0) { hilfeLabel.setText("Die Zahl ist kleiner");
 											convertGuess = 0;
 											tfEingabe.setText(null);}
