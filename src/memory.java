@@ -14,9 +14,6 @@ import javax.swing.JTextField;
 
 public class memory extends JFrame {
 	
-	//Variablen
-	static int buttonBreite = Main.buttonBreite;
-	static int buttonHöhe = Main.buttonHöhe;
 	
 	public static void Main(String[] args) {
 		
@@ -35,10 +32,8 @@ public class memory extends JFrame {
 			
 			
 			//Zurück Button
-			java.net.URL backButtonURL = Main.class.getResource("pictures\\backButton.png");
-			ImageIcon backButtonIcon = new ImageIcon(backButtonURL);
-			JButton zurückButton = new JButton(backButtonIcon);
-			zurückButton.setBounds(20, 20, buttonBreite, buttonHöhe);
+			JButton zurückButton = new JButton("Zurück");
+			zurückButton.setBounds(20, 20, Main.buttonBreite, Main.buttonHöhe);
 			zurückButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
