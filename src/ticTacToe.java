@@ -36,7 +36,9 @@ public class ticTacToe extends JFrame{
 		Font eingabeSchrift = new Font("Rockwell", Font.BOLD, 120);
 				
 		//Zurück Button
-		JButton zurückButton = new JButton("Zurück");
+		java.net.URL backButtonURL = Main.class.getResource("pictures\\backButton.png");
+		ImageIcon backButtonIcon = new ImageIcon(backButtonURL);
+		JButton zurückButton = new JButton(backButtonIcon);
 		zurückButton.setBounds(20, 20, buttonBreite, buttonHöhe);
 		zurückButton.addActionListener(new ActionListener() {
 			@Override
