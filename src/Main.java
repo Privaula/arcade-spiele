@@ -1,7 +1,11 @@
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.Clip;
@@ -49,17 +53,33 @@ public class Main extends JFrame{
 			titlePanel.add(title);
 			titlePanel.setBounds(300, 20, 600, 100);
 			
+			//Uhrzeit
+			SimpleDateFormat date = new SimpleDateFormat("HH:mm");
+			String date1 = date.format(new Date());
+			System.out.println(date1);
+			JLabel uhrzeitLabel = new JLabel(date.format(new Date()));
+			Font uhrzeitFont =new Font("Rockwell", Font.PLAIN , 50);
+			uhrzeitLabel.setForeground(Color.white);
+			uhrzeitLabel.setFont(uhrzeitFont);
+			uhrzeitLabel.setBounds(20, 550, 250, 150);
+			
+			
+			
+			
+			
+			
+			
 			
 			
 			
 			//Aman Jonas Button
 			JButton memoryButton = new JButton("aman jonas memory");
-			memoryButton.setBounds(420, 220, 200, 200);
+			memoryButton.setBounds(420, 420, 200, 200);
 			memoryButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					memory.memory();
+					//memory.memory();
 				}
 			});
 			
@@ -71,7 +91,7 @@ public class Main extends JFrame{
 			ImageIcon zahlenguesserAltIcon = new ImageIcon(zahlenguesserAltIconURL);
 			JButton zahlenguesserButton = new JButton(zahlenguesserIcon);
 			zahlenguesserButton.setRolloverIcon(zahlenguesserAltIcon);
-			zahlenguesserButton.setBounds(170, 220, 200, 200);
+			zahlenguesserButton.setBounds(170, 420, 200, 200);
 			zahlenguesserButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -89,12 +109,12 @@ public class Main extends JFrame{
 			
 			
 			//Rock Paper Scissors Button
-			java.net.URL rpsIconURL = getClass().getResource("pictures\\zahlenguesser.png");
+			java.net.URL rpsIconURL = getClass().getResource("pictures\\rps.png");
 			System.out.println(rpsIconURL.toExternalForm());
 			
 			ImageIcon rpsIcon = new ImageIcon(rpsIconURL);
 			JButton rpsButton = new JButton(rpsIcon);
-			rpsButton.setBounds(670, 220, 200, 200);
+			rpsButton.setBounds(670, 420, 200, 200);
 			rpsButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -113,7 +133,7 @@ public class Main extends JFrame{
 			//ImageIcon zahlenguesserAltIcon = new ImageIcon(zahlenguesserAltIconURL);
 			JButton ticTacToeButton = new JButton(ticTacToeIcon);
 			//zahlenguesserButton.setRolloverIcon(zahlenguesserAltIcon);
-			ticTacToeButton.setBounds(930, 220, 200, 200);
+			ticTacToeButton.setBounds(930, 420, 200, 200);
 			ticTacToeButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -132,7 +152,7 @@ public class Main extends JFrame{
 			
 			//Background
 			JLabel myLabel;
-			java.net.URL backgroundURL = getClass().getResource("pictures\\background.jpg");
+			java.net.URL backgroundURL = getClass().getResource("pictures\\backgroundNew.png");
 			ImageIcon background = new ImageIcon(backgroundURL);
 			myLabel = new JLabel(background);
 			myLabel.setSize(1280, 720);
@@ -165,7 +185,8 @@ public class Main extends JFrame{
 			pane.setLayout(null);
 			pane.add(rpsButton);
 			pane.add(memoryButton);
-			pane.add(titlePanel);
+			//pane.add(titlePanel);
+			pane.add(uhrzeitLabel);
 			pane.add(button);
 			pane.add(zahlenguesserButton);
 			pane.add(ticTacToeButton);
