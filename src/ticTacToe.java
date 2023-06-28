@@ -36,9 +36,7 @@ public class ticTacToe extends JFrame{
 		Font eingabeSchrift = new Font("Rockwell", Font.BOLD, 120);
 				
 		//Zurück Button
-		java.net.URL backButtonURL = Main.class.getResource("pictures\\backButton.png");
-		ImageIcon backButtonIcon = new ImageIcon(backButtonURL);
-		JButton zurückButton = new JButton(backButtonIcon);
+		JButton zurückButton = new JButton("Zurück");
 		zurückButton.setBounds(20, 20, buttonBreite, buttonHöhe);
 		zurückButton.addActionListener(new ActionListener() {
 			@Override
@@ -49,12 +47,10 @@ public class ticTacToe extends JFrame{
 		});
 		
 		//Background
-		java.net.URL backgroundURL = Main.class.getResource("pictures\\tictactoeBackground.png");
+		java.net.URL backgroundURL = Main.class.getResource("pictures\\background.jpg");
 		ImageIcon background = new ImageIcon(backgroundURL);
 		JLabel myLabel = new JLabel(background);
 		myLabel.setSize(1280, 720);
-		
-		
 		
 		//ICON
 		java.net.URL taskbarIconURL = Main.class.getResource("pictures\\taskbarIcon.png");
@@ -62,24 +58,12 @@ public class ticTacToe extends JFrame{
 		jf.setIconImage(taskbarIcon.getImage());
 		
 		//Felder erstellen
-		customButton[] felderArray = new customButton[9];
-		
-		for(int i = 0; i < 9; i++)
-		{
-			//var felderArray[1] = new customButton();
-			
-			//customButton[] felderArray = new customButton[4];
-		
-		}
 		
 		
 		
-		
+		//add to jf
 		jf.add(zurückButton);
 		jf.add(myLabel);
-		
-		
-		
 	}
 	
 }
