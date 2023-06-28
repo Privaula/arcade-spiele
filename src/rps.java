@@ -45,9 +45,7 @@ public class rps {
 		myLabel.setSize(1280, 720);
 		
 		//Zurück Button
-		java.net.URL backButtonURL = Main.class.getResource("pictures\\backButton.png");
-		ImageIcon backButtonIcon = new ImageIcon(backButtonURL);
-		JButton zurückButton = new JButton(backButtonIcon);
+		JButton zurückButton = new JButton("Zurück");
 		zurückButton.setBounds(20, 20, buttonBreite, buttonHöhe);
 		zurückButton.addActionListener(new ActionListener() {
 					@Override
@@ -78,15 +76,15 @@ public class rps {
 		rpsLabel.setBackground(Color.black);
 		rpsLabel.setOpaque(true);
 		rpsLabel.setSize(900, 70);
-		rpsLabel.setLocation(150, 135);
+		rpsLabel.setLocation(150, 70);
 		Font schrift = new Font ("Rockwell", Font.PLAIN , 50);
 		rpsLabel.setFont(schrift);
 		
 		
 		//PC Button
-		//"Der Computer hat "+ randomStringName + " gewÃ¤hlt." + computerMessage
+		//"Der Computer hat "+ randomStringName + " gewählt." + computerMessage
 		JButton computerButton = new JButton("Wähle eine der drei Optionen aus.");
-		computerButton.setBounds(360, 450, 400, 200);
+		computerButton.setBounds(360, 420, 400, 200);
 		computerButton.addActionListener(new ActionListener() {
 							@Override
 				public void actionPerformed(ActionEvent e) {
@@ -97,7 +95,7 @@ public class rps {
 		
 		//Rock Button
 		JButton rockButton = new JButton("Stein");
-		rockButton.setBounds(200, 220, 200, 200);
+		rockButton.setBounds(200, 170, 200, 200);
 		rockButton.addActionListener(new ActionListener() {
 			@Override
 			
@@ -114,7 +112,7 @@ public class rps {
 		
 		//Paper Button
 		JButton paperButton = new JButton("Papier");
-		paperButton.setBounds(460, 220, 200, 200);
+		paperButton.setBounds(460, 170, 200, 200);
 		paperButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -128,7 +126,7 @@ public class rps {
 		
 		// Scissors Button
 		JButton scissorsButton = new JButton("Schere");
-		scissorsButton.setBounds(720, 220, 200, 200);
+		scissorsButton.setBounds(720, 170, 200, 200);
 		scissorsButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
