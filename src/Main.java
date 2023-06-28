@@ -31,8 +31,8 @@ public class Main extends JFrame{
 		}
 	
 		//Variablen
-		public static int buttonBreite = 110;
-		public static int buttonHöhe = 85;
+		public static int buttonBreite = 200;
+		public static int buttonHöhe = 100;
 		
 		public Main()
 		{
@@ -58,10 +58,10 @@ public class Main extends JFrame{
 			String date1 = date.format(new Date());
 			System.out.println(date1);
 			JLabel uhrzeitLabel = new JLabel(date.format(new Date()));
-			Font uhrzeitFont =new Font("Rockwell", Font.PLAIN , 50);
+			Font uhrzeitFont =new Font("Public Pixel", Font.PLAIN , 25);
 			uhrzeitLabel.setForeground(Color.white);
 			uhrzeitLabel.setFont(uhrzeitFont);
-			uhrzeitLabel.setBounds(20, 550, 250, 150);
+			uhrzeitLabel.setBounds(20, 570, 250, 150);
 			
 			
 			
@@ -104,16 +104,16 @@ public class Main extends JFrame{
 			
 			
 			
-			
-			
-			
-			
 			//Rock Paper Scissors Button
 			java.net.URL rpsIconURL = getClass().getResource("pictures\\rps.png");
 			System.out.println(rpsIconURL.toExternalForm());
 			
+			java.net.URL rpsAltIconURL = getClass().getResource("pictures\\rpsalt.png");
+			ImageIcon rpsAltIcon = new ImageIcon(rpsAltIconURL);
+			
 			ImageIcon rpsIcon = new ImageIcon(rpsIconURL);
 			JButton rpsButton = new JButton(rpsIcon);
+			rpsButton.setRolloverIcon(rpsAltIcon);
 			rpsButton.setBounds(670, 420, 200, 200);
 			rpsButton.addActionListener(new ActionListener() {
 				@Override
@@ -126,13 +126,13 @@ public class Main extends JFrame{
 			
 			
 			//TicTacToe Button
-			java.net.URL ticTacToeIconURL = getClass().getResource("pictures\\zahlenguesser.png");
+			java.net.URL ticTacToeIconURL = getClass().getResource("pictures\\tictactoe.png");
 			ImageIcon ticTacToeIcon = new ImageIcon(ticTacToeIconURL);
 			
-			//java.net.URL zahlenguesserAltIconURL = getClass().getResource("pictures\\zahlenguesseralt.png");
-			//ImageIcon zahlenguesserAltIcon = new ImageIcon(zahlenguesserAltIconURL);
+			java.net.URL tictactoeAltIconURL = getClass().getResource("pictures\\tictactoealt.png");
+			ImageIcon tictactoeAltIcon = new ImageIcon(tictactoeAltIconURL);
 			JButton ticTacToeButton = new JButton(ticTacToeIcon);
-			//zahlenguesserButton.setRolloverIcon(zahlenguesserAltIcon);
+			ticTacToeButton.setRolloverIcon(tictactoeAltIcon);
 			ticTacToeButton.setBounds(930, 420, 200, 200);
 			ticTacToeButton.addActionListener(new ActionListener() {
 				@Override
