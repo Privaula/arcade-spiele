@@ -41,7 +41,9 @@ public class zahlenguesser extends JFrame {
 				Font eingabeSchrift = new Font("Rockwell", Font.BOLD, 120);
 		
 		//Zurück Button
-		JButton zurückButton = new JButton("Zurück");
+		java.net.URL backButtonURL = Main.class.getResource("pictures\\backButton.png");
+		ImageIcon backButtonIcon = new ImageIcon(backButtonURL);
+		JButton zurückButton = new JButton(backButtonIcon);
 		zurückButton.setBounds(20, 20, buttonBreite, buttonHöhe);
 		zurückButton.addActionListener(new ActionListener() {
 			@Override
@@ -82,7 +84,7 @@ public class zahlenguesser extends JFrame {
 		numberLabel.setBackground(Color.black);
 		numberLabel.setOpaque(true);
 		numberLabel.setSize(900, 70);
-		numberLabel.setLocation(150, 120);
+		numberLabel.setLocation(150, 130);
 		numberLabel.setFont(schrift);
 		
 		
@@ -114,7 +116,7 @@ public class zahlenguesser extends JFrame {
 	            } 
 	            else {
 	               tfEingabe.setEditable(false);
-	               numberLabel.setText("Nur Zahlen einfügen(0-9)");
+	               numberLabel.setText("Nur Zahlen einfÃ¼gen(0-9)");
 	            }
 	         }
 	      });
