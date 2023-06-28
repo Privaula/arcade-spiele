@@ -31,8 +31,11 @@ public class Main extends JFrame{
 		}
 	
 		//Variablen
-		public static int buttonBreite = 200;
-		public static int buttonHöhe = 100;
+		public static final int buttonBreite = 110;
+		public static final int buttonHöhe = 85;
+		public boolean timerRunning = true;
+		private JLabel _uhrzeitLabel;
+		private SimpleDateFormat _dateFormat = new SimpleDateFormat("HH:mm");
 		
 		public Main()
 		{
@@ -53,17 +56,17 @@ public class Main extends JFrame{
 			titlePanel.add(title);
 			titlePanel.setBounds(300, 20, 600, 100);
 			
-			//Uhrzeit
-			SimpleDateFormat date = new SimpleDateFormat("HH:mm");
-			String date1 = date.format(new Date());
-			System.out.println(date1);
-			JLabel uhrzeitLabel = new JLabel(date.format(new Date()));
-			Font uhrzeitFont =new Font("Public Pixel", Font.PLAIN , 25);
-			uhrzeitLabel.setForeground(Color.white);
-			uhrzeitLabel.setFont(uhrzeitFont);
-			uhrzeitLabel.setBounds(20, 570, 250, 150);
+			//test neuer thread
 			
+			var timeThread = new timeThread("time", this);
+			timeThread.start();
 			
+			//Uhrzeit			
+			_uhrzeitLabel = new JLabel();
+			Font uhrzeitFont = new Font("Rockwell", Font.PLAIN , 50);
+			_uhrzeitLabel.setForeground(Color.white);
+			_uhrzeitLabel.setFont(uhrzeitFont);
+			_uhrzeitLabel.setBounds(20, 550, 250, 150);
 			
 			
 			
@@ -104,16 +107,16 @@ public class Main extends JFrame{
 			
 			
 			
+			
+			
+			
+			
 			//Rock Paper Scissors Button
 			java.net.URL rpsIconURL = getClass().getResource("pictures\\rps.png");
 			System.out.println(rpsIconURL.toExternalForm());
 			
-			java.net.URL rpsAltIconURL = getClass().getResource("pictures\\rpsalt.png");
-			ImageIcon rpsAltIcon = new ImageIcon(rpsAltIconURL);
-			
 			ImageIcon rpsIcon = new ImageIcon(rpsIconURL);
 			JButton rpsButton = new JButton(rpsIcon);
-			rpsButton.setRolloverIcon(rpsAltIcon);
 			rpsButton.setBounds(670, 420, 200, 200);
 			rpsButton.addActionListener(new ActionListener() {
 				@Override
@@ -126,13 +129,13 @@ public class Main extends JFrame{
 			
 			
 			//TicTacToe Button
-			java.net.URL ticTacToeIconURL = getClass().getResource("pictures\\tictactoe.png");
+			java.net.URL ticTacToeIconURL = getClass().getResource("pictures\\zahlenguesser.png");
 			ImageIcon ticTacToeIcon = new ImageIcon(ticTacToeIconURL);
 			
-			java.net.URL tictactoeAltIconURL = getClass().getResource("pictures\\tictactoealt.png");
-			ImageIcon tictactoeAltIcon = new ImageIcon(tictactoeAltIconURL);
+			//java.net.URL zahlenguesserAltIconURL = getClass().getResource("pictures\\zahlenguesseralt.png");
+			//ImageIcon zahlenguesserAltIcon = new ImageIcon(zahlenguesserAltIconURL);
 			JButton ticTacToeButton = new JButton(ticTacToeIcon);
-			ticTacToeButton.setRolloverIcon(tictactoeAltIcon);
+			//zahlenguesserButton.setRolloverIcon(zahlenguesserAltIcon);
 			ticTacToeButton.setBounds(930, 420, 200, 200);
 			ticTacToeButton.addActionListener(new ActionListener() {
 				@Override
@@ -186,7 +189,7 @@ public class Main extends JFrame{
 			pane.add(rpsButton);
 			pane.add(memoryButton);
 			//pane.add(titlePanel);
-			pane.add(uhrzeitLabel);
+			pane.add(_uhrzeitLabel);
 			pane.add(button);
 			pane.add(zahlenguesserButton);
 			pane.add(ticTacToeButton);
@@ -197,9 +200,18 @@ public class Main extends JFrame{
 			gl.setHorizontalGroup(gl.createSequentialGroup().addComponent(button));
 			
 			gl.setAutoCreateContainerGaps(true);
+		
+			
 		}
 
+		//Uhrzeit setter
 		
+		public void updateTimeLabel()
+		{
+			var now = new Date();
+			//System.out.println(now.toString());
+			_uhrzeitLabel.setText(_dateFormat.format(now));			
+		}
 		
 	}
 
