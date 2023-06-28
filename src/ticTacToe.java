@@ -47,10 +47,12 @@ public class ticTacToe extends JFrame{
 		});
 		
 		//Background
-		java.net.URL backgroundURL = Main.class.getResource("pictures\\background.jpg");
+		java.net.URL backgroundURL = Main.class.getResource("pictures\\tictactoeBackground.png");
 		ImageIcon background = new ImageIcon(backgroundURL);
 		JLabel myLabel = new JLabel(background);
 		myLabel.setSize(1280, 720);
+		
+		
 		
 		//ICON
 		java.net.URL taskbarIconURL = Main.class.getResource("pictures\\taskbarIcon.png");
@@ -68,6 +70,11 @@ public class ticTacToe extends JFrame{
 		
 		}
 		
+		
+		
+		
+		jf.add(zurückButton);
+		jf.add(myLabel);
 		
 		
 		
