@@ -47,7 +47,7 @@ public class ticTacToe extends JFrame{
 		});
 		
 		//Background
-		java.net.URL backgroundURL = Main.class.getResource("pictures\\background.jpg");
+		java.net.URL backgroundURL = Main.class.getResource("pictures\\tictactoeBackground.png");
 		ImageIcon background = new ImageIcon(backgroundURL);
 		JLabel myLabel = new JLabel(background);
 		myLabel.setSize(1280, 720);
@@ -59,10 +59,30 @@ public class ticTacToe extends JFrame{
 		
 		//Felder erstellen
 		
+		customButton button1 = new customButton(150, 80);
+		customButton button2 = new customButton(350, 80);
+		customButton button3 = new customButton(550, 80);
+		customButton button4 = new customButton(150, 280);
+		customButton button5 = new customButton(350, 280);
+		customButton button6 = new customButton(550, 280);
+		customButton button7 = new customButton(150, 480);
+		customButton button8 = new customButton(350, 480);
+		customButton button9 = new customButton(550, 480);
+
 		
 		
 		//add to jf
 		jf.add(zurückButton);
+		jf.add(button1);
+		jf.add(button2);
+		jf.add(button3);
+		jf.add(button4);
+		jf.add(button5);
+		jf.add(button6);
+		jf.add(button7);
+		jf.add(button8);
+		jf.add(button9);
+
 		jf.add(myLabel);
 	}
 	
