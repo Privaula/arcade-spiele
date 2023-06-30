@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 
 public class customButton extends JButton{
 
-	public customButton(String name,int locX, int locY)
+	public customButton(int locX, int locY)
 	{
 		//Schriftarten
 		Font schrift = new Font ("Rockwell", Font.PLAIN , 50);
@@ -27,7 +27,7 @@ public class customButton extends JButton{
 		this.setForeground(Color.CYAN);
 		this.setBackground(Color.BLACK);
 		this.setOpaque(true);
-		this.setSize(130,130);
+		this.setSize(150,150);
 		this.setLocation(locX,locY);
 		this.setFont(schrift);
 		
