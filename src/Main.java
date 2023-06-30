@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.text.StyleConstants.CharacterConstants;
 
 public class Main extends JFrame{
 	
@@ -35,7 +38,10 @@ public class Main extends JFrame{
 		public static final int buttonHöhe = 85;
 		public boolean timerRunning = true;
 		private JLabel _uhrzeitLabel;
-		private SimpleDateFormat _dateFormat = new SimpleDateFormat("HH:mm");
+		private JLabel _dateLabel;
+		private SimpleDateFormat _timeFormat = new SimpleDateFormat("HH:mm");
+		private SimpleDateFormat _dateFormat = new SimpleDateFormat("dd:MM:YY");
+		Font font = new Font("Public Pixel", Font.PLAIN , 50);
 		
 		public Main()
 		{
@@ -56,23 +62,23 @@ public class Main extends JFrame{
 			titlePanel.add(title);
 			titlePanel.setBounds(300, 20, 600, 100);
 			
-			//test neuer thread
+			// time thread
 			
 			var timeThread = new timeThread("time", this);
 			timeThread.start();
 			
 			//Uhrzeit			
-			_uhrzeitLabel = new JLabel();
-			Font uhrzeitFont = new Font("Rockwell", Font.PLAIN , 50);
+			_uhrzeitLabel = new JLabel();	
 			_uhrzeitLabel.setForeground(Color.white);
-			_uhrzeitLabel.setFont(uhrzeitFont);
-			_uhrzeitLabel.setBounds(20, 550, 250, 150);
+			_uhrzeitLabel.setFont(font);
+			_uhrzeitLabel.setBounds(20, 570, 250, 150);
 			
-			
-			
-			
-			
-			
+			//Date
+			_dateLabel = new JLabel();
+			_dateLabel.setForeground(Color.WHITE);
+			_dateLabel.setFont(font);
+			_dateLabel.setBounds(990,570, 250, 150);
+			_dateLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 			
 			
 			//Aman Jonas Button
@@ -105,19 +111,17 @@ public class Main extends JFrame{
 			});
 			
 			
-			
-			
-			
-			
-			
-			
 			//Rock Paper Scissors Button
 			java.net.URL rpsIconURL = getClass().getResource("pictures\\rps.png");
 			System.out.println(rpsIconURL.toExternalForm());
 			
+			java.net.URL rpsAltIconURL = getClass().getResource("pictures\\rpsalt.png");
+			ImageIcon rpsAltIcon = new ImageIcon(rpsAltIconURL);
+			
 			ImageIcon rpsIcon = new ImageIcon(rpsIconURL);
 			JButton rpsButton = new JButton(rpsIcon);
 			rpsButton.setBounds(670, 420, 200, 200);
+			rpsButton.setRolloverIcon(rpsAltIcon);
 			rpsButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -129,13 +133,17 @@ public class Main extends JFrame{
 			
 			
 			//TicTacToe Button
-			java.net.URL ticTacToeIconURL = getClass().getResource("pictures\\zahlenguesser.png");
+			java.net.URL ticTacToeIconURL = getClass().getResource("pictures\\tictactoe.png");
 			ImageIcon ticTacToeIcon = new ImageIcon(ticTacToeIconURL);
 			
-			//java.net.URL zahlenguesserAltIconURL = getClass().getResource("pictures\\zahlenguesseralt.png");
-			//ImageIcon zahlenguesserAltIcon = new ImageIcon(zahlenguesserAltIconURL);
+			java.net.URL tictactoeAltIconURL = getClass().getResource("pictures\\tictactoealt.png");
+			ImageIcon tictactoeAltIcon = new ImageIcon(tictactoeAltIconURL);
+			
+
 			JButton ticTacToeButton = new JButton(ticTacToeIcon);
-			//zahlenguesserButton.setRolloverIcon(zahlenguesserAltIcon);
+			ticTacToeButton.setRolloverIcon(tictactoeAltIcon);
+
+			
 			ticTacToeButton.setBounds(930, 420, 200, 200);
 			ticTacToeButton.addActionListener(new ActionListener() {
 				@Override
@@ -149,6 +157,9 @@ public class Main extends JFrame{
 			
 			
 			
+			//Class<? extends Main> directory = this.getClass();
+			
+			//System.out.println(directory);System.out.println("test directory");
 			
 			
 			
@@ -190,6 +201,7 @@ public class Main extends JFrame{
 			pane.add(memoryButton);
 			//pane.add(titlePanel);
 			pane.add(_uhrzeitLabel);
+			pane.add(_dateLabel);
 			pane.add(button);
 			pane.add(zahlenguesserButton);
 			pane.add(ticTacToeButton);
@@ -210,7 +222,19 @@ public class Main extends JFrame{
 		{
 			var now = new Date();
 			//System.out.println(now.toString());
-			_uhrzeitLabel.setText(_dateFormat.format(now));			
+			_uhrzeitLabel.setText(_timeFormat.format(now));			
+		}
+		public void updateDateLabel()
+		{ 
+//			var df = DateFormat.getDateInstance(DateFormat.SHORT);
+//			System.out.println(df);
+//			_dateLabel.setText());
+			
+			var date = new Date();
+			_dateLabel.setText(_dateFormat.format(date));
+			
+			
+			
 		}
 		
 	}
