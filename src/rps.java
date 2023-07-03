@@ -94,8 +94,10 @@ public class rps {
 		
 		
 		//Rock Button
-		JButton rockButton = new JButton("Stein");
-		rockButton.setBounds(200, 170, 200, 200);
+		java.net.URL steinURL = Main.class.getResource("pictures\\stein.png");
+		ImageIcon steinIcon = new ImageIcon(steinURL);
+		JButton rockButton = new JButton(steinIcon);
+		rockButton.setBounds(120, 170, 300, 200);
 		rockButton.addActionListener(new ActionListener() {
 			@Override
 			
@@ -111,8 +113,10 @@ public class rps {
 	
 		
 		//Paper Button
-		JButton paperButton = new JButton("Papier");
-		paperButton.setBounds(460, 170, 200, 200);
+		java.net.URL papierURL = Main.class.getResource("pictures\\papier.png");
+		ImageIcon papierIcon = new ImageIcon(papierURL);
+		JButton paperButton = new JButton(papierIcon);
+		paperButton.setBounds(450, 170, 300, 200);
 		paperButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -125,8 +129,10 @@ public class rps {
 		});
 		
 		// Scissors Button
-		JButton scissorsButton = new JButton("Schere");
-		scissorsButton.setBounds(720, 170, 200, 200);
+		java.net.URL schereURL = Main.class.getResource("pictures\\schere.png");
+		ImageIcon schereIcon = new ImageIcon(schereURL);
+		JButton scissorsButton = new JButton(schereIcon);
+		scissorsButton.setBounds(780, 170, 300, 200);
 		scissorsButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
