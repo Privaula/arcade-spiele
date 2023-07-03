@@ -41,7 +41,7 @@ public class Main extends JFrame{
 		private JLabel _dateLabel;
 		private SimpleDateFormat _timeFormat = new SimpleDateFormat("HH:mm");
 		private SimpleDateFormat _dateFormat = new SimpleDateFormat("dd:MM:YY");
-		Font font = new Font("Public Pixel", Font.PLAIN , 50);
+		Font font = new Font("Public Pixel", Font.PLAIN , 40);
 		
 		public Main()
 		{
@@ -77,7 +77,7 @@ public class Main extends JFrame{
 			_dateLabel = new JLabel();
 			_dateLabel.setForeground(Color.WHITE);
 			_dateLabel.setFont(font);
-			_dateLabel.setBounds(990,570, 250, 150);
+			_dateLabel.setBounds(850,570, 400, 150);
 			_dateLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 			
 			
@@ -238,5 +238,4 @@ public class Main extends JFrame{
 		}
 		
 	}
-
 
