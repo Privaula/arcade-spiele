@@ -15,12 +15,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class ticTacToe extends JFrame{
+public class ticTacToe extends JFrame //implements ActionListener
+{
 
 	
 	static int buttonBreite = Main.buttonBreite;
 	static int buttonHöhe = Main.buttonHöhe;
-	public static void ticTacToe() 
+	static public int[] fieldArray = new int[9];
+	static  public boolean player1;
+	
+ 	public  void ticTacToe() 
 	{
 		
 		//JFrame erstellen
@@ -59,21 +63,24 @@ public class ticTacToe extends JFrame{
 		
 		//Felder erstellen
 		
-		customButton button1 = new customButton(150, 80);
-		customButton button2 = new customButton(350, 80);
-		customButton button3 = new customButton(550, 80);
-		customButton button4 = new customButton(150, 280);
-		customButton button5 = new customButton(350, 280);
-		customButton button6 = new customButton(550, 280);
-		customButton button7 = new customButton(150, 480);
-		customButton button8 = new customButton(350, 480);
-		customButton button9 = new customButton(550, 480);
+		customButtonttt button1 = new customButtonttt(150, 80, this, "button1");
+		//button1.addActionListener(this);
+		customButtonttt button2 = new customButtonttt(350, 80,this, "button2");
+		customButtonttt button3 = new customButtonttt(550, 80,this, "button3");
+		customButtonttt button4 = new customButtonttt(150, 280,this, "button4");
+		customButtonttt button5 = new customButtonttt(350, 280,this, "button5");
+		customButtonttt button6 = new customButtonttt(550, 280,this, "button6");
+		customButtonttt button7 = new customButtonttt(150, 480,this, "button7");
+		customButtonttt button8 = new customButtonttt(350, 480,this, "button8");
+		customButtonttt button9 = new customButtonttt(550, 480,this, "button9");
 
-		
+	
 		
 		//add to jf
 		jf.add(zurückButton);
 		jf.add(button1);
+		
+		
 		jf.add(button2);
 		jf.add(button3);
 		jf.add(button4);
@@ -84,6 +91,40 @@ public class ticTacToe extends JFrame{
 		jf.add(button9);
 
 		jf.add(myLabel);
+		
+		
+		
+		
+		
+		
+		
 	}
-	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	public void pressedButton(int i , customButtonttt button)
+ 	{
+ 		if(player1)
+ 		{
+ 			button.setText("x");
+ 			fieldArray[i] = 1;
+ 			player1 = false;
+ 		}
+ 		else if(!player1)
+ 		{
+ 			button.setText("o");
+ 			fieldArray[i] = 2;
+ 			player1 = true;
+ 		}
+ 	}
+
+//
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 }
+//		
