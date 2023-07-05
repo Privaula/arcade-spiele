@@ -15,14 +15,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class customButton extends JButton{
+public class customButtonttt extends JButton{
+	private ticTacToe tttt;
+	String buttonName;
+	customButtonttt buttonnn;
+	int i;
 
-	public customButton(int locX, int locY)
+	public customButtonttt(int locX, int locY, ticTacToe ttt, String name)
 	{
+		tttt = ttt;
 		//Schriftarten
 		Font schrift = new Font ("Rockwell", Font.PLAIN , 50);
 		Font eingabeSchrift = new Font("Rockwell", Font.BOLD, 120);
 		
+		this.setName(name);
 		this.setText(" ");
 		this.setForeground(Color.CYAN);
 		this.setBackground(Color.BLACK);
@@ -30,6 +36,50 @@ public class customButton extends JButton{
 		this.setSize(150,150);
 		this.setLocation(locX,locY);
 		this.setFont(schrift);
+
+		
+		buttonName = this.getName();
+		buttonnn = this;
+		switch(buttonName)
+		{
+		case "button1": i = 0;
+						break;
+		case "button2": i = 1;
+						break;
+		case "button3": i = 2;
+						break;
+		case "button4": i = 3;
+						break;
+		case "button5": i = 4;
+						break;
+		case "button6": i = 5;
+						break;
+		case "button7": i = 6;
+						break;
+		case "button8": i = 7;
+						break;
+		case "button9": i = 8;
+						break;
+		}
+		
+		
+		this.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				if(ttt.fieldArray[i] == 0)
+				{
+					if(ttt.player1)
+					{
+						ttt.pressedButton(i, buttonnn);
+					}
+					else if(!ttt.player1)
+					{
+						ttt.pressedButton(i, buttonnn);
+					}
+				}
+			}
+		});
 		
 	}
 }
