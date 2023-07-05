@@ -33,18 +33,20 @@ public class Main extends JFrame{
 		});
 		}
 	
-		//Variablen
-		public static final int buttonBreite = 110;
-		public static final int buttonHöhe = 85;
-		public boolean timerRunning = true;
-		private JLabel _uhrzeitLabel;
-		private JLabel _dateLabel;
-		private SimpleDateFormat _timeFormat = new SimpleDateFormat("HH:mm");
-		private SimpleDateFormat _dateFormat = new SimpleDateFormat("dd:MM:YY");
-		Font font = new Font("Public Pixel", Font.PLAIN , 40);
-		
-		public Main()
-		{
+	public static final int buttonBreite = 110;
+	public static final int buttonHöhe = 85;
+	public boolean timerRunning = true;
+	private JLabel _uhrzeitLabel;
+	private JLabel _dateLabel;
+	private SimpleDateFormat _timeFormat = new SimpleDateFormat("HH:mm");
+	private SimpleDateFormat _dateFormat = new SimpleDateFormat("dd.MM.YY");
+	Font font = new Font("Public Pixel", Font.PLAIN , 50);
+	ticTacToe ttt = new ticTacToe();
+	
+	public Main()
+	{
+		//ttt instanziieren
+		ttt = ttt;
 			//JFrame erstellen
 			setTitle("Arcade Spiele - Main Menu");
 			setSize(1280, 720);
@@ -149,7 +151,7 @@ public class Main extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					ticTacToe.ticTacToe();
+					ttt.ticTacToe();
 					JFrame jf = new ticTacToe();	
 				}
 			});
@@ -238,4 +240,3 @@ public class Main extends JFrame{
 		}
 		
 	}
-
