@@ -48,32 +48,32 @@ public class editFile {
 	}
 	public static void readFile()
 	{
-//		String str = System.getenv("APPDATA");
-//		File gamedata = new File(str + "/arcade-spiele/gamedata/playtime.txt");
-//		//System.out.println(str);
-//		try {
-//			Scanner scanner = new Scanner(gamedata);
-//			String string = "42";
-//			int inte = Integer.parseInt(string);
-//		
-//			String sStr = scanner.nextLine();
-//			
-//			//Integer inte2 = Integer.parseInt(str);
-////			System.out.println(inte2);
-//			
-////			sff = Integer.parseInt(sStr);
-////			String mStr = scanner.nextLine();
-////			mff = Integer.parseInt(mStr);
-////			String hStr = scanner.nextLine();
-////			hff = Integer.parseInt(hStr);
-////			System.out.println("werte gespeichert");
-////			System.out.println(sStr);
-////			System.out.println(mStr);
-////			System.out.println(hStr);
-//			scanner.close();
-//		} catch (FileNotFoundException e) {
-//			System.out.println("konnte nicht ausgelesen werden");
-//		}
+		String str = System.getenv("APPDATA");
+		File gamedata = new File(str + "/arcade-spiele/gamedata/playtime.txt");
+		//System.out.println(str);
+		try {
+			Scanner scanner = new Scanner(gamedata);
+		
+			String sStr = scanner.nextLine();
+			sff = Integer.parseInt(sStr);
+//			System.out.println(sff);
+//			System.out.println("sekunden ausgegeben");
+			
+			String mStr = scanner.nextLine();
+			mff = Integer.parseInt(mStr);
+//			System.out.println(mff);
+//			System.out.println("minuten ausgegeben");
+			
+			String hStr = scanner.nextLine();
+			hff = Integer.parseInt(hStr);
+//			System.out.println(hff);
+//			System.out.println("stunden ausgegeben");
+			
+			System.out.println("werte gespeichert");
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("konnte nicht ausgelesen werden");
+		}
 	}
 	
 }
