@@ -9,6 +9,11 @@ public class timeThread extends Thread{
 	SimpleDateFormat date2 = new SimpleDateFormat("HH:mm");
 	private Main _mainInstanz;
 	
+	int s = editFile.sff;
+	int m = editFile.mff;
+	int h = editFile.hff;
+	
+	
 	
 	
 	//erstelle neue Thread
@@ -20,14 +25,27 @@ public class timeThread extends Thread{
 	
 	public void run()
 	{
+		
+		
+		
+		
 		boolean running = true;
 		
 		while(running)
 		{
+			s++;
+			if (s == 60) {
+				m++;
+				s = 0;
+			}
+			if (m == 60) {
+				h++;
+				m = 0;
+			}
 			try
 			{
-				updateUhrzeitLabel();			
-				Thread.sleep(500);
+				update();			
+				Thread.sleep(1000);
 			}
 			catch (InvocationTargetException | InterruptedException e)
 			{
@@ -38,17 +56,23 @@ public class timeThread extends Thread{
 		
 	}
 	
-	private void updateUhrzeitLabel() throws InvocationTargetException, InterruptedException
+	private void update() throws InvocationTargetException, InterruptedException
 	{
 		javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
 			
 			@Override
 			public void run() {
-				
+				System.out.println("in run angekommen");
 				_mainInstanz.updateTimeLabel();
 				_mainInstanz.updateDateLabel();
+				_mainInstanz.updatePlaytime(h, m, s);
+				editFile.editFile(s, m, h);
+				editFile.readFile();
 				
 			}
 		});
+		
+		
+		
 	}
 }
