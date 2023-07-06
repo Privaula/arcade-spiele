@@ -4,6 +4,14 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,6 +37,14 @@ public class Main extends JFrame{
 			public void run() {
 				Main m = new Main();
 				m.setVisible(true);
+				editFile.createFile();
+//				String fontUrl = "https://dl.dafont.com/dl/?f=public_pixel";
+//				try {
+//					var URL = new URL(fontUrl);
+//				} catch (MalformedURLException e) {
+//				}
+//				BufferedInputStream in = new BufferedInputStream(URL.openStream());
+			    
 			}
 		});
 		}
@@ -38,11 +54,11 @@ public class Main extends JFrame{
 	public boolean timerRunning = true;
 	private JLabel _uhrzeitLabel;
 	private JLabel _dateLabel;
+	private JLabel _playtime;
 	private SimpleDateFormat _timeFormat = new SimpleDateFormat("HH:mm");
 	private SimpleDateFormat _dateFormat = new SimpleDateFormat("dd.MM.YY");
-	Font font = new Font("Public Pixel", Font.PLAIN , 50);
+	Font font = new Font("Public Pixel", Font.PLAIN , 30);
 	ticTacToe ttt = new ticTacToe();
-	
 	public Main()
 	{
 		//ttt instanziieren
@@ -81,6 +97,18 @@ public class Main extends JFrame{
 			_dateLabel.setFont(font);
 			_dateLabel.setBounds(850,570, 400, 150);
 			_dateLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+			
+			//playTimeLabel
+			_playtime = new JLabel();
+			_playtime.setForeground(Color.white);
+			_playtime.setFont(font);
+			_playtime.setBounds(850,-45,400,150);
+			_playtime.setHorizontalAlignment(SwingConstants.RIGHT);
+			_playtime.setText("fortinite");
+			
+			
+			
+			
 			
 			
 			//Aman Jonas Button
@@ -157,7 +185,9 @@ public class Main extends JFrame{
 			});
 			
 			
-			
+			String str = System.getenv("APPDATA");
+			System.out.println(str);
+			System.out.println("fortnite");
 			
 			//Class<? extends Main> directory = this.getClass();
 			
@@ -207,6 +237,7 @@ public class Main extends JFrame{
 			pane.add(button);
 			pane.add(zahlenguesserButton);
 			pane.add(ticTacToeButton);
+			pane.add(_playtime);
 			pane.add(myLabel);
 			
 			
@@ -223,20 +254,82 @@ public class Main extends JFrame{
 		public void updateTimeLabel()
 		{
 			var now = new Date();
-			//System.out.println(now.toString());
 			_uhrzeitLabel.setText(_timeFormat.format(now));			
 		}
 		public void updateDateLabel()
 		{ 
-//			var df = DateFormat.getDateInstance(DateFormat.SHORT);
-//			System.out.println(df);
-//			_dateLabel.setText());
-			
 			var date = new Date();
 			_dateLabel.setText(_dateFormat.format(date));
-			
-			
+		}
+
+		public void updatePlaytime(int h, int m, int s) {
+			if(h != 0)
+			{
+				if(s < 10 && m < 10)
+				{
+					_playtime.setText(h + ":" + "0" + m + ":" + "0" + s);
+				}
+				else if(s < 10)
+				{
+					_playtime.setText(h + ":" + m + ":" + "0" + s);
+				}
+				else if(m < 10)
+				{
+					_playtime.setText(h + ":" + "0" + m + ":" + s);
+				}
+				else 
+				{
+					_playtime.setText(h + ":" + m + ":" + s);
+				}
+			}
+			else if(h == 0)
+			{
+				if(s < 10 && m < 10)
+				{
+					_playtime.setText("0" + m + ":" + "0" + s);
+				}
+				else if(s < 10)
+				{
+					_playtime.setText(m + ":" + "0" + s);
+				}
+				else if(m < 10)
+				{
+					_playtime.setText("0" + m + ":" + s);
+				}
+				else 
+				{
+					_playtime.setText(m + ":" + s);
+				}
+				
+			}
 			
 		}
+//		public static void downloadFont() {
+//	        String fontUrl = "https://example.com/font.ttf";
+//
+//	        try {
+//	            // Öffne eine Verbindung zur URL
+//	            URL url = new URL(fontUrl);
+//	            InputStream inputStream = url.openStream();
+//
+//	            //Speichere die Schriftartdatei lokal
+//	            Path outputPath = Path.of("font.ttf");
+//	            Files.copy(inputStream, outputPath, StandardCopyOption.REPLACE_EXISTING);
+//
+//	            inputStream.close();
+//
+//	            // Lade die heruntergeladene Schriftartdatei
+//	            Font font = Font.createFont(Font.TRUETYPE_FONT, outputPath.toFile());
+//
+//	            // Gib der Schriftart einen Namen und eine Größe
+//	            Font derivedFont = font.deriveFont(24f);
+//
+//	            // Verwende die heruntergeladene Schriftart in deinem Programm
+//	            // Beispiel: Setze die Schriftart für eine Swing-Komponente
+//	            yourComponent.setFont(derivedFont);
+//	        } catch (IOException | FontFormatException e) {
+//	            e.printStackTrace();
+//	        }
+//	    }
 		
 	}
