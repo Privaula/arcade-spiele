@@ -65,7 +65,7 @@ public class zahlenguesser extends JFrame {
 		
 		//Background
 		
-		java.net.URL backgroundURL = Main.class.getResource("pictures\\background.jpg");
+		java.net.URL backgroundURL = Main.class.getResource("pictures\\zahlenguesserBackground.png");
 		ImageIcon background = new ImageIcon(backgroundURL);
 		JLabel myLabel = new JLabel(background);
 		myLabel.setSize(1280, 720);
