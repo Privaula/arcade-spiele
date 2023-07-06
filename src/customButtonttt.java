@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -15,19 +16,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class customButtonttt extends JButton{
-	private ticTacToe tttt;
 	String buttonName;
 	customButtonttt buttonnn;
 	int i;
 
 	public customButtonttt(int locX, int locY, ticTacToe ttt, String name)
 	{
-		tttt = ttt;
 		//Schriftarten
 		Font schrift = new Font ("Rockwell", Font.PLAIN , 50);
 		Font eingabeSchrift = new Font("Rockwell", Font.BOLD, 120);
 		
+		//buttonEinstellungen
 		this.setName(name);
 		this.setText(" ");
 		this.setForeground(Color.CYAN);
@@ -36,6 +42,8 @@ public class customButtonttt extends JButton{
 		this.setSize(150,150);
 		this.setLocation(locX,locY);
 		this.setFont(schrift);
+		this.setFocusable(false);
+		this.setBorder(null);
 
 		
 		buttonName = this.getName();
@@ -65,21 +73,32 @@ public class customButtonttt extends JButton{
 		
 		this.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-
+			public void actionPerformed(ActionEvent e) 
+			{
+				
 				if(ttt.fieldArray[i] == 0)
 				{
-					if(ttt.player1)
+					if(ttt.einzelspielerbool)
 					{
-						ttt.pressedButton(i, buttonnn);
 					}
-					else if(!ttt.player1)
+					else if(ttt.einzelspielerbool == false)
 					{
-						ttt.pressedButton(i, buttonnn);
+						ttt.gameRunning = true;
+						if(ttt.player1)
+						{
+							ttt.pressedButton(i, buttonnn);
+						}
+						else if(!ttt.player1)
+						{
+							ttt.pressedButton(i, buttonnn);
+						}
 					}
-				}
+				}				
+				
+				
 			}
 		});
-		
+	}
+	
 	}
 }
