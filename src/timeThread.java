@@ -9,9 +9,9 @@ public class timeThread extends Thread{
 	SimpleDateFormat date2 = new SimpleDateFormat("HH:mm");
 	private Main _mainInstanz;
 	
-	int s = editFile.sff;
-	int m = editFile.mff;
-	int h = editFile.hff;
+	int s;
+	int m;
+	int h;
 	
 	
 	
@@ -21,6 +21,10 @@ public class timeThread extends Thread{
 	{
 		this.setName(name);
 		_mainInstanz = main;
+		editFile.readFile();
+		s = editFile.sff;
+		m = editFile.mff;
+		h = editFile.hff;
 	}
 	
 	public void run()
@@ -62,12 +66,11 @@ public class timeThread extends Thread{
 			
 			@Override
 			public void run() {
-				System.out.println("in run angekommen");
+//				System.out.println("in run angekommen");
 				_mainInstanz.updateTimeLabel();
 				_mainInstanz.updateDateLabel();
 				_mainInstanz.updatePlaytime(h, m, s);
 				editFile.editFile(s, m, h);
-				editFile.readFile();
 				
 			}
 		});
