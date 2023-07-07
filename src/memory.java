@@ -19,7 +19,7 @@ public class memory extends JFrame {
 		
 	}
 		
-		public  void memory(RandomNum Number) {
+		public  void memory() {
 			
 			//JFrame erstellen
 			JFrame jf = new JFrame();
@@ -53,11 +53,11 @@ public class memory extends JFrame {
 			// Buttons für Gameplay
 
 			customButtonMemory customButtonMemory1 = new customButtonMemory(150, 150, this, "customButtonMemory1");
-			customButtonMemory customButtonMemory2 = new customButtonMemory(250, 250, this, "customButtonMemory2");
-			customButtonMemory customButtonMemory3 = new customButtonMemory(300, 300, this, "customButtonMemory3");
-			customButtonMemory customButtonMemory4 = new customButtonMemory(350, 350, this, "customButtonMemory4");
-			customButtonMemory customButtonMemory5 = new customButtonMemory(400, 400, this, "customButtonMemory5");
-			customButtonMemory customButtonMemory6 = new customButtonMemory(450, 450, this, "customButtonMemory6");
+			customButtonMemory customButtonMemory2 = new customButtonMemory(200, 200, this, "customButtonMemory2");
+			customButtonMemory customButtonMemory3 = new customButtonMemory(220, 220, this, "customButtonMemory3");
+			customButtonMemory customButtonMemory4 = new customButtonMemory(240, 240, this, "customButtonMemory4");
+			customButtonMemory customButtonMemory5 = new customButtonMemory(260, 260, this, "customButtonMemory5");
+			customButtonMemory customButtonMemory6 = new customButtonMemory(280, 280, this, "customButtonMemory6");
 
 			//add to jf
 			jf.add(zurückButton);
