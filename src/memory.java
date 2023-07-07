@@ -19,7 +19,7 @@ public class memory extends JFrame {
 		
 	}
 		
-		public static void memory() {
+		public  void memory(RandomNum Number) {
 			
 			//JFrame erstellen
 			JFrame jf = new JFrame();
@@ -50,9 +50,25 @@ public class memory extends JFrame {
 			
 			GroupLayout gl = new GroupLayout(jf);
 			jf.setLayout(null);
-			
-			
+			// Buttons für Gameplay
+
+			customButtonMemory customButtonMemory1 = new customButtonMemory(150, 150, this, "customButtonMemory1");
+			customButtonMemory customButtonMemory2 = new customButtonMemory(250, 250, this, "customButtonMemory2");
+			customButtonMemory customButtonMemory3 = new customButtonMemory(300, 300, this, "customButtonMemory3");
+			customButtonMemory customButtonMemory4 = new customButtonMemory(350, 350, this, "customButtonMemory4");
+			customButtonMemory customButtonMemory5 = new customButtonMemory(400, 400, this, "customButtonMemory5");
+			customButtonMemory customButtonMemory6 = new customButtonMemory(450, 450, this, "customButtonMemory6");
+
 			//add to jf
 			jf.add(zurückButton);
-		}
+			jf.add(customButtonMemory1);
+			jf.add(customButtonMemory2);
+			jf.add(customButtonMemory3);
+			jf.add(customButtonMemory4);
+			jf.add(customButtonMemory5);
+			jf.add(customButtonMemory6);
+
+			// Array für 
+
+		}	
 }
