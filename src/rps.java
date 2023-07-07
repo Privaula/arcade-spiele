@@ -77,7 +77,7 @@ public class rps {
 		rpsLabel.setOpaque(true);
 		rpsLabel.setSize(900, 70);
 		rpsLabel.setLocation(150, 70);
-		Font schrift = new Font ("Rockwell", Font.PLAIN , 50);
+		Font schrift = new Font ("Public Pixel", Font.PLAIN , 25);
 		rpsLabel.setFont(schrift);
 		
 		
