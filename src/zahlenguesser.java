@@ -37,8 +37,10 @@ public class zahlenguesser extends JFrame {
 		jf.setVisible(true);
 		
 		//Schriftarten
-				Font schrift = new Font ("Rockwell", Font.PLAIN , 50);
-				Font eingabeSchrift = new Font("Rockwell", Font.BOLD, 120);
+				Font schrift = new Font ("Public Pixel", Font.PLAIN , 30);
+				Font eingabeSchrift = new Font("Public Pixel", Font.BOLD, 100);
+				Font hilfeLabelschrift = new Font ("Public Pixel", Font.PLAIN , 26);
+				
 		
 		//Zurück Button
 		JButton zurückButton = new JButton("Zurück");
@@ -78,11 +80,11 @@ public class zahlenguesser extends JFrame {
 		//Text Anzeige
 		String text = "Bitte geben Sie eine Zahl von 1-100 ein";
 		JLabel numberLabel = new JLabel(text);
-		numberLabel.setForeground(Color.CYAN);
+		numberLabel.setForeground(Color.GREEN);
 		numberLabel.setBackground(Color.black);
 		numberLabel.setOpaque(true);
-		numberLabel.setSize(900, 70);
-		numberLabel.setLocation(150, 120);
+		numberLabel.setSize(1200, 70);
+		numberLabel.setLocation(20, 120);
 		numberLabel.setFont(schrift);
 		
 		
@@ -90,7 +92,7 @@ public class zahlenguesser extends JFrame {
 		
 		String hilfe ="Hier wird ein Tipp erscheinen";
 		JLabel hilfeLabel = new JLabel(hilfe);
-		hilfeLabel.setForeground(Color.cyan);
+		hilfeLabel.setForeground(Color.GREEN);
 		hilfeLabel.setBackground(Color.black);
 		hilfeLabel.setOpaque(true);
 		hilfeLabel.setSize(900, 70);
@@ -150,7 +152,10 @@ public class zahlenguesser extends JFrame {
 											tfEingabe.setText(null);
 											hilfeLabel.setText("Sie haben die Zahl mit "+  versuche +" Versuchen erraten!");
 											nochmalButton.setVisible(true);
-											hilfeLabel.setSize(1070,70);}
+											hilfeLabel.setSize(1180,70);
+											hilfeLabel.setLocation(30, 210);
+											hilfeLabel.setFont(hilfeLabelschrift);
+											}
 				if(convertGuess > random && convertGuess > 0) { hilfeLabel.setText("Die Zahl ist kleiner");
 											convertGuess = 0;
 											tfEingabe.setText(null);}
