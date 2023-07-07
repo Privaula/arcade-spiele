@@ -44,6 +44,11 @@ public class rps {
 		myLabel = new JLabel(background);
 		myLabel.setSize(1280, 720);
 		
+		//ICON
+		java.net.URL taskbarIconURL = Main.class.getResource("pictures\\taskbarIcon.png");
+		ImageIcon taskbarIcon = new ImageIcon(taskbarIconURL);
+		jf.setIconImage(taskbarIcon.getImage());
+
 		//Zurück Button
 		JButton zurückButton = new JButton("Zurück");
 		zurückButton.setBounds(20, 20, buttonBreite, buttonHöhe);
