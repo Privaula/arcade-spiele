@@ -66,8 +66,13 @@ public class rps {
 		});
 		
 		//nochmal Button
-		JButton nochmalButton = new JButton("Nochmal spielen!");
-		nochmalButton.setBounds(170, 480, 140, buttonHöhe);
+		java.net.URL retryButtonIconURL = Main.class.getResource("pictures\\retryButton.png");
+		ImageIcon retryButtonIcon = new ImageIcon(retryButtonIconURL);
+		JButton nochmalButton = new JButton(retryButtonIcon);
+		nochmalButton.setBounds(170, 480, 180, 80);
+		nochmalButton.setBorder(null);
+		nochmalButton.setContentAreaFilled(false);
+		nochmalButton.setBackground(new Color(0,0,0,0));
 		nochmalButton.setVisible(false);
 		nochmalButton.addActionListener(new ActionListener() {
 					
@@ -86,7 +91,7 @@ public class rps {
 		rpsLabel.setBackground(Color.black);
 		rpsLabel.setOpaque(true);
 		rpsLabel.setSize(900, 70);
-		rpsLabel.setLocation(150, 70);
+		rpsLabel.setLocation(150, 90);
 		Font schrift = new Font ("Public Pixel", Font.PLAIN , 25);
 		rpsLabel.setFont(schrift);
 		
@@ -95,18 +100,48 @@ public class rps {
 		//"Der Computer hat "+ randomStringName + " gewählt." + computerMessage
 		JButton computerButton = new JButton("Wähle eine der drei Optionen aus.");
 		computerButton.setBounds(360, 420, 400, 200);
+		computerButton.setBackground(Color.CYAN);
 		computerButton.addActionListener(new ActionListener() {
 							@Override
 				public void actionPerformed(ActionEvent e) {
 							
 						}
 		});
+
 		
-		
-		//Rock Button
+		//alle buttons
 		java.net.URL steinURL = Main.class.getResource("pictures\\stein.png");
 		ImageIcon steinIcon = new ImageIcon(steinURL);
 		JButton rockButton = new JButton(steinIcon);
+
+		java.net.URL papierURL = Main.class.getResource("pictures\\papier.png");
+		ImageIcon papierIcon = new ImageIcon(papierURL);
+		JButton paperButton = new JButton(papierIcon);
+
+		java.net.URL schereURL = Main.class.getResource("pictures\\schere.png");
+		ImageIcon schereIcon = new ImageIcon(schereURL);
+		JButton scissorsButton = new JButton(schereIcon);
+
+
+		java.net.URL computerChoiceSteinURL = Main.class.getResource("pictures\\stein.png");
+		ImageIcon computerChoiceIconStein = new ImageIcon(computerChoiceSteinURL);
+		JButton computerChoiceButtonStein = new JButton(computerChoiceIconStein);
+		computerChoiceButtonStein.setBounds(780, 420, 300, 200);
+		computerChoiceButtonStein.setVisible(false);
+
+		java.net.URL computerChoicePapierURL = Main.class.getResource("pictures\\papier.png");
+		ImageIcon computerChoiceIconPapier = new ImageIcon(computerChoicePapierURL);
+		JButton computerChoiceButtonPapier = new JButton(computerChoiceIconPapier);
+		computerChoiceButtonPapier.setBounds(780, 420, 300, 200);
+		computerChoiceButtonPapier.setVisible(false);
+
+		java.net.URL computerChoiceSchereURL = Main.class.getResource("pictures\\schere.png");
+		ImageIcon computerChoiceIconSchere = new ImageIcon(computerChoiceSchereURL);
+		JButton computerChoiceButtonSchere = new JButton(computerChoiceIconSchere);
+		computerChoiceButtonSchere.setBounds(780, 420, 300, 200);
+		computerChoiceButtonSchere.setVisible(false);
+
+		//Rock Button
 		rockButton.setBounds(120, 170, 300, 200);
 		rockButton.addActionListener(new ActionListener() {
 			@Override
@@ -117,15 +152,18 @@ public class rps {
 				proof();
 				computerButton.setText("Der Computer hat "+ randomStringName + " gewählt." + " Sie haben "+ computerMessage + ".");
 				nochmalButton.setVisible(true);
+				scissorsButton.setVisible(false);
+				paperButton.setVisible(false);
+				computerChoiceButtonStein.setVisible(true);
+				computerChoiceButtonPapier.setVisible(true);
+				computerChoiceButtonSchere.setVisible(true);
+				
 			}
 		});
 		
 	
 		
 		//Paper Button
-		java.net.URL papierURL = Main.class.getResource("pictures\\papier.png");
-		ImageIcon papierIcon = new ImageIcon(papierURL);
-		JButton paperButton = new JButton(papierIcon);
 		paperButton.setBounds(450, 170, 300, 200);
 		paperButton.addActionListener(new ActionListener() {
 			@Override
@@ -135,13 +173,16 @@ public class rps {
 				proof();
 				computerButton.setText("Der Computer hat "+ randomStringName + " gewählt." + " Sie haben "+ computerMessage + ".");
 				nochmalButton.setVisible(true);
+				rockButton.setVisible(false);
+				scissorsButton.setVisible(false);
+				computerChoiceButtonStein.setVisible(true);
+				computerChoiceButtonPapier.setVisible(true);
+				computerChoiceButtonSchere.setVisible(true);
+
 			}
 		});
 		
 		// Scissors Button
-		java.net.URL schereURL = Main.class.getResource("pictures\\schere.png");
-		ImageIcon schereIcon = new ImageIcon(schereURL);
-		JButton scissorsButton = new JButton(schereIcon);
 		scissorsButton.setBounds(780, 170, 300, 200);
 		scissorsButton.addActionListener(new ActionListener() {
 			@Override
@@ -151,6 +192,12 @@ public class rps {
 				proof();
 				computerButton.setText("Der Computer hat "+ randomStringName + " gewählt." + " Sie haben "+ computerMessage + ".");
 				nochmalButton.setVisible(true);
+				paperButton.setVisible(false);
+				rockButton.setVisible(false);
+				computerChoiceButtonStein.setVisible(true);
+				computerChoiceButtonPapier.setVisible(true);
+				computerChoiceButtonSchere.setVisible(true);
+
 			}
 		});
 		
@@ -164,18 +211,21 @@ public class rps {
 			System.out.println("PC hat Stein");
 			randomString = "r";
 			randomStringName = "Stein";
+			jf.add(computerChoiceButtonStein);
 			break;
 		
 		case 2:
 			System.out.println("PC hat Papier");
 			randomString = "p";
 			randomStringName = "Papier";
+			jf.add(computerChoiceButtonPapier);
 			break;
 		
 		case 3:
 			System.out.println("PC hat Schere");
 			randomString = "s";
 			randomStringName = "Schere";
+			jf.add(computerChoiceButtonSchere);
 			break;
 		}
 		System.out.println();
@@ -183,7 +233,11 @@ public class rps {
 		
 		
 		
+		
 		//add to jf
+		
+		
+		
 		jf.add(nochmalButton);
 		jf.add(computerButton);
 		jf.add(zurückButton);
