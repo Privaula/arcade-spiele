@@ -49,7 +49,7 @@ public class Main extends JFrame{
 		});
 		}
 	
-	public static final int buttonBreite = 110;
+	public static final int buttonBreite = 190;
 	public static final int buttonHöhe = 85;
 	public boolean timerRunning = true;
 	private JLabel _uhrzeitLabel;
@@ -107,12 +107,14 @@ public class Main extends JFrame{
 			_playtime.setText("fortinite");
 			
 			
-			
-			
-			
-			
-			//Aman Jonas Button
-			JButton memoryButton = new JButton("aman jonas memory");
+			//Memory Button
+			java.net.URL memoryIconURL = getClass().getResource("pictures\\memory.png");
+			ImageIcon memoryIcon = new ImageIcon(memoryIconURL);
+
+			java.net.URL memoryAltIconURL = getClass().getResource("pictures\\memoryalt.png");
+			ImageIcon memoryAltIcon = new ImageIcon(memoryAltIconURL);
+			JButton memoryButton = new JButton(memoryIcon);
+			memoryButton.setRolloverIcon(memoryAltIcon);
 			memoryButton.setBounds(420, 420, 200, 200);
 			memoryButton.addActionListener(new ActionListener() {
 				@Override
@@ -165,15 +167,10 @@ public class Main extends JFrame{
 			//TicTacToe Button
 			java.net.URL ticTacToeIconURL = getClass().getResource("pictures\\tictactoe.png");
 			ImageIcon ticTacToeIcon = new ImageIcon(ticTacToeIconURL);
-			
 			java.net.URL tictactoeAltIconURL = getClass().getResource("pictures\\tictactoealt.png");
 			ImageIcon tictactoeAltIcon = new ImageIcon(tictactoeAltIconURL);
-			
-
 			JButton ticTacToeButton = new JButton(ticTacToeIcon);
 			ticTacToeButton.setRolloverIcon(tictactoeAltIcon);
-
-			
 			ticTacToeButton.setBounds(930, 420, 200, 200);
 			ticTacToeButton.addActionListener(new ActionListener() {
 				@Override
@@ -209,8 +206,13 @@ public class Main extends JFrame{
 			setIconImage(taskbarIcon.getImage());
 			
 			//Endebutton
-			JButton button = new JButton("Ende");
-			button.setBounds(20, 20, buttonBreite, buttonHöhe);
+			java.net.URL quitButtonIconURL = getClass().getResource("pictures\\quitButton.png");
+			ImageIcon quitButtonIcon = new ImageIcon(quitButtonIconURL);
+			JButton button = new JButton(quitButtonIcon);
+			button.setBounds(5, 5, buttonBreite, buttonHöhe);
+			button.setBackground(new Color(0,0,0,0));
+			button.setContentAreaFilled(false);
+			button.setBorder(null);
 			button.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
