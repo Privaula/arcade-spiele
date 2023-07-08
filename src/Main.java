@@ -66,6 +66,7 @@ public class Main extends JFrame{
 			//JFrame erstellen
 			setTitle("Arcade Spiele - Main Menu");
 			setSize(1280, 720);
+		//nice
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 	
