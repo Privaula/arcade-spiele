@@ -57,18 +57,7 @@ public class zahlenguesser extends JFrame {
 					jf.setVisible(false);
 					}
 		});
-		/*
-		//Ende Button
-		JButton endeButton = new JButton("Ende");
-		endeButton.setBounds(20, 20, 100, 70);
-		endeButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);	
-			}
-		});
-		*/
+		
 		
 		//Background
 		
@@ -127,8 +116,13 @@ public class zahlenguesser extends JFrame {
 	      });
 		
 		//nochmal Button
-		JButton nochmalButton = new JButton("Nochmal spielen!");
-		nochmalButton.setBounds(240, 360, 140, buttonHöhe);
+		java.net.URL retryButtonIconURL = Main.class.getResource("pictures\\retryButton.png");
+		ImageIcon retryButtonIcon = new ImageIcon(retryButtonIconURL);
+		JButton nochmalButton = new JButton(retryButtonIcon);
+		nochmalButton.setBounds(210, 360, 180, 80);
+		nochmalButton.setBorder(null);
+		nochmalButton.setContentAreaFilled(false);
+		nochmalButton.setBackground(new Color(0,0,0,0));
 		nochmalButton.setVisible(false);
 		nochmalButton.addActionListener(new ActionListener() {
 			
@@ -143,8 +137,13 @@ public class zahlenguesser extends JFrame {
 		
 		
 		//der Button
-		JButton enter = new JButton("Enter!");
-		enter.setBounds(700, 350, 100, 100);
+		java.net.URL enterButtonIconURL = Main.class.getResource("pictures\\enterButton.png");
+		ImageIcon enterButtonIcon = new ImageIcon(enterButtonIconURL);
+		JButton enter = new JButton(enterButtonIcon);
+		enter.setBounds(670, 350, 180, 80);
+		enter.setBorder(null);
+		enter.setContentAreaFilled(false);
+		enter.setBackground(new Color(0,0,0,0));
 		enter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
