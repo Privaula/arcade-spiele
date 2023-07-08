@@ -43,14 +43,19 @@ public class zahlenguesser extends JFrame {
 				
 		
 		//Zurück Button
-		JButton zurückButton = new JButton("Zurück");
-		zurückButton.setBounds(20, 20, buttonBreite, buttonHöhe);
+		java.net.URL backButtonIconURL = Main.class.getResource("pictures\\backButton.png");
+		ImageIcon backButtonIcon = new ImageIcon(backButtonIconURL);
+		JButton zurückButton = new JButton(backButtonIcon);
+		zurückButton.setBounds(5, 5, buttonBreite, buttonHöhe);
+		zurückButton.setBorder(null);
+		zurückButton.setContentAreaFilled(false);
+		zurückButton.setBackground(new Color(0,0,0,0));
 		zurückButton.addActionListener(new ActionListener() {
-			@Override
+					@Override
 			public void actionPerformed(ActionEvent e) {
-				Main.main(null);
-				jf.setVisible(false);
-			}
+					Main.main(null);
+					jf.setVisible(false);
+					}
 		});
 		/*
 		//Ende Button
@@ -155,6 +160,7 @@ public class zahlenguesser extends JFrame {
 											hilfeLabel.setSize(1180,70);
 											hilfeLabel.setLocation(30, 210);
 											hilfeLabel.setFont(hilfeLabelschrift);
+											enter.setVisible(false);
 											}
 				if(convertGuess > random && convertGuess > 0) { hilfeLabel.setText("Die Zahl ist kleiner");
 											convertGuess = 0;
