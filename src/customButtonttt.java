@@ -34,12 +34,13 @@ public class customButtonttt extends JButton{
 		
 		//buttonEinstellungen
 		this.setName(name);
-		this.setText(" ");
 		this.setForeground(Color.CYAN);
 		this.setBackground(Color.BLACK);
-		this.setOpaque(true);
+//		//this.setOpaque(true);
 		this.setSize(150,150);
 		this.setLocation(locX,locY);
+		setContentAreaFilled(false);
+		
 		this.setFont(schrift);
 		this.setFocusable(false);
 		this.setBorder(null);
@@ -81,38 +82,34 @@ public class customButtonttt extends JButton{
 					if(ttt.fieldArray[i] == 0)
 					{
 						ttt.nochmalButtonVisible();
-						if(ttt.mehrspieler_Player1)
-						{
-							ttt.pressedButton(i, buttonnn);
-						}
-						else if(!ttt.mehrspieler_Player1)
-						{
-							ttt.pressedButton(i, buttonnn);
-						}
+						ttt.pressedButtonMehrspieler(i, buttonnn);
 					}
 				}				
 				
 				//einzelspieler
 				
-				if(ttt.einzelspielerbool)
+				if(ttt.einzelspielerbool && ttt.gameRunning == true)
 				{
-					if(ttt.einzelspieler_spielerTurn)
+					if(ttt.einzelspieler_player1)
 					{
-						
+						if(ttt.fieldArray[i] == 0)
+						{
+							ttt.nochmalButtonVisible();
+							ttt.pressedButtonEinzelspieler(i, buttonnn);
+						}
 					}
-					else if(!ttt.einzelspieler_spielerTurn)
+					else if(!ttt.einzelspieler_player1)
 					{
-						
+						if(ttt.fieldArray[i] == 0)
+						{
+							ttt.nochmalButtonVisible();
+							ttt.pressedButtonEinzelspieler(i, buttonnn);
+							//ttt.chooseField();
+						}
 					}
 				}
 
 			}
 		});
 	}
-	public void changeButtonIcons()
-	{}
-	
-	
-	
-	}
-
+}
