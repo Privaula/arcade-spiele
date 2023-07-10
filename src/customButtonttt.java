@@ -31,7 +31,6 @@ public class customButtonttt extends JButton{
 	{
 		//Schriftarten
 		Font schrift = new Font ("Rockwell", Font.PLAIN , 50);
-		Font eingabeSchrift = new Font("Rockwell", Font.BOLD, 120);
 		
 		//buttonEinstellungen
 		this.setName(name);
@@ -76,29 +75,44 @@ public class customButtonttt extends JButton{
 			public void actionPerformed(ActionEvent e) 
 			{
 				
-				if(ttt.fieldArray[i] == 0)
+				//mehrspieler
+				if(!ttt.einzelspielerbool && ttt.gameRunning == true)
 				{
-					if(ttt.einzelspielerbool)
+					if(ttt.fieldArray[i] == 0)
 					{
-					}
-					else if(ttt.einzelspielerbool == false)
-					{
-						ttt.gameRunning = true;
-						if(ttt.player1)
+						ttt.nochmalButtonVisible();
+						if(ttt.mehrspieler_Player1)
 						{
 							ttt.pressedButton(i, buttonnn);
 						}
-						else if(!ttt.player1)
+						else if(!ttt.mehrspieler_Player1)
 						{
 							ttt.pressedButton(i, buttonnn);
 						}
 					}
 				}				
 				
+				//einzelspieler
 				
+				if(ttt.einzelspielerbool)
+				{
+					if(ttt.einzelspieler_spielerTurn)
+					{
+						
+					}
+					else if(!ttt.einzelspieler_spielerTurn)
+					{
+						
+					}
+				}
+
 			}
 		});
 	}
+	public void changeButtonIcons()
+	{}
+	
+	
 	
 	}
 
