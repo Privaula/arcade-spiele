@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
@@ -38,17 +40,12 @@ public class Main extends JFrame{
 				Main m = new Main();
 				m.setVisible(true);
 				editFile.createFile();
-//				String fontUrl = "https://dl.dafont.com/dl/?f=public_pixel";
-//				try {
-//					var URL = new URL(fontUrl);
-//				} catch (MalformedURLException e) {
-//				}
-//				BufferedInputStream in = new BufferedInputStream(URL.openStream());
-			    
+
 			}
 		});
 		}
-	
+	public static ClassLoader loader;
+	private static String resources = "";
 	public static final int buttonBreite = 190;
 	public static final int buttonHöhe = 85;
 	public boolean timerRunning = true;
@@ -58,9 +55,13 @@ public class Main extends JFrame{
 	private SimpleDateFormat _timeFormat = new SimpleDateFormat("HH:mm");
 	private SimpleDateFormat _dateFormat = new SimpleDateFormat("dd.MM.YY");
 	Font font = new Font("Public Pixel", Font.PLAIN , 30);
+	Font publicPixel = new Font("fonts\\public_pixel\\fonts\\PublicPixel.ttf", Font.PLAIN, 30);
 	ticTacToe ttt = new ticTacToe();
+	memory m = new memory();
 	public Main()
 	{
+		
+		
 		//ttt instanziieren
 		ttt = ttt;
 			//JFrame erstellen
@@ -89,20 +90,21 @@ public class Main extends JFrame{
 			//Uhrzeit			
 			_uhrzeitLabel = new JLabel();	
 			_uhrzeitLabel.setForeground(Color.white);
-			_uhrzeitLabel.setFont(font);
+			_uhrzeitLabel.setFont(publicPixel);
 			_uhrzeitLabel.setBounds(20, 570, 250, 150);
 			
 			//Date
 			_dateLabel = new JLabel();
 			_dateLabel.setForeground(Color.WHITE);
-			_dateLabel.setFont(font);
+			_dateLabel.setFont(publicPixel);
 			_dateLabel.setBounds(850,570, 400, 150);
 			_dateLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 			
 			//playTimeLabel
 			_playtime = new JLabel();
 			_playtime.setForeground(Color.white);
-			_playtime.setFont(font);
+			_playtime.setFont(publicPixel);
+			
 			_playtime.setBounds(850,-45,400,150);
 			_playtime.setHorizontalAlignment(SwingConstants.RIGHT);
 			_playtime.setText("fortinite");
@@ -121,8 +123,7 @@ public class Main extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					memory memory = new memory();
-					memory.memory();
+					m.memory();
 				}
 			});
 			
@@ -308,32 +309,31 @@ public class Main extends JFrame{
 			}
 			
 		}
-//		public static void downloadFont() {
-//	        String fontUrl = "https://example.com/font.ttf";
+
+//		public static Font loadFont(String filename, float size)throws Exception {
+//	        InputStream stream = loader.getResource(resources + filename).openStream();
+//	        Font font = Font.createFont(Font.TRUETYPE_FONT, stream);
+//	        return font.deriveFont(size);
+//		}
+		
+
+//		    public static Font CustomFont(String path) {
+//		        Font customFont = loadFont(path, 24f);
+//		        System.out.println(customFont == null);
+//		        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+//		        ge.registerFont(customFont);
+//		        return customFont;
 //
-//	        try {
-//	            // Öffne eine Verbindung zur URL
-//	            URL url = new URL(fontUrl);
-//	            InputStream inputStream = url.openStream();
-//
-//	            //Speichere die Schriftartdatei lokal
-//	            Path outputPath = Path.of("font.ttf");
-//	            Files.copy(inputStream, outputPath, StandardCopyOption.REPLACE_EXISTING);
-//
-//	            inputStream.close();
-//
-//	            // Lade die heruntergeladene Schriftartdatei
-//	            Font font = Font.createFont(Font.TRUETYPE_FONT, outputPath.toFile());
-//
-//	            // Gib der Schriftart einen Namen und eine Größe
-//	            Font derivedFont = font.deriveFont(24f);
-//
-//	            // Verwende die heruntergeladene Schriftart in deinem Programm
-//	            // Beispiel: Setze die Schriftart für eine Swing-Komponente
-//	            yourComponent.setFont(derivedFont);
-//	        } catch (IOException | FontFormatException e) {
-//	            e.printStackTrace();
-//	        }
-//	    }
+//		    }
+//		    public static Font loadFont(String path, float size){
+//		        try {
+//		            Font myFont = Font.createFont(Font.TRUETYPE_FONT, Launcher.class.getResourceAsStream(path));
+//		            return myFont.deriveFont(Font.PLAIN, size);
+//		        } catch (FontFormatException | IOException e) {
+//		            e.printStackTrace();
+//		            System.exit(1);
+//		        }
+//		        return null;
+//		    }
 		
 	}
