@@ -64,23 +64,12 @@ public class Main extends JFrame{
 		
 		//ttt instanziieren
 		ttt = ttt;
+		
 			//JFrame erstellen
 			setTitle("Arcade Spiele - Main Menu");
 			setSize(1280, 720);
-		//nice
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
-	
-			//Titel Arcade Spiele
-			java.net.URL titlePictureURL = getClass().getResource("pictures\\Title.png");
-
-			
-			
-			ImageIcon titlePicture = new ImageIcon(titlePictureURL);
-			JLabel title = new JLabel(titlePicture);
-			JPanel titlePanel = new JPanel();
-			titlePanel.add(title);
-			titlePanel.setBounds(300, 20, 600, 100);
 			
 			// time thread
 			
@@ -104,16 +93,13 @@ public class Main extends JFrame{
 			_playtime = new JLabel();
 			_playtime.setForeground(Color.white);
 			_playtime.setFont(publicPixel);
-			
 			_playtime.setBounds(850,-45,400,150);
 			_playtime.setHorizontalAlignment(SwingConstants.RIGHT);
 			_playtime.setText("fortinite");
 			
-			
 			//Memory Button
 			java.net.URL memoryIconURL = getClass().getResource("pictures\\memory.png");
 			ImageIcon memoryIcon = new ImageIcon(memoryIconURL);
-
 			java.net.URL memoryAltIconURL = getClass().getResource("pictures\\memoryalt.png");
 			ImageIcon memoryAltIcon = new ImageIcon(memoryAltIconURL);
 			JButton memoryButton = new JButton(memoryIcon);
@@ -130,7 +116,6 @@ public class Main extends JFrame{
 			//Zahlenguesser Button
 			java.net.URL zahlenguesserIconURL = getClass().getResource("pictures\\zahlenguesser.png");
 			ImageIcon zahlenguesserIcon = new ImageIcon(zahlenguesserIconURL);
-			
 			java.net.URL zahlenguesserAltIconURL = getClass().getResource("pictures\\zahlenguesseralt.png");
 			ImageIcon zahlenguesserAltIcon = new ImageIcon(zahlenguesserAltIconURL);
 			JButton zahlenguesserButton = new JButton(zahlenguesserIcon);
@@ -145,14 +130,11 @@ public class Main extends JFrame{
 				}
 			});
 			
-			
 			//Rock Paper Scissors Button
 			java.net.URL rpsIconURL = getClass().getResource("pictures\\rps.png");
 			System.out.println(rpsIconURL.toExternalForm());
-			
 			java.net.URL rpsAltIconURL = getClass().getResource("pictures\\rpsalt.png");
 			ImageIcon rpsAltIcon = new ImageIcon(rpsAltIconURL);
-			
 			ImageIcon rpsIcon = new ImageIcon(rpsIconURL);
 			JButton rpsButton = new JButton(rpsIcon);
 			rpsButton.setBounds(670, 420, 200, 200);
@@ -164,8 +146,6 @@ public class Main extends JFrame{
 					rps.rps();
 				}
 			});
-			
-			
 			
 			//TicTacToe Button
 			java.net.URL ticTacToeIconURL = getClass().getResource("pictures\\tictactoe.png");
@@ -183,18 +163,6 @@ public class Main extends JFrame{
 					JFrame jf = new ticTacToe();	
 				}
 			});
-			
-			
-			String str = System.getenv("APPDATA");
-			System.out.println(str);
-			System.out.println("fortnite");
-			
-			//Class<? extends Main> directory = this.getClass();
-			
-			//System.out.println(directory);System.out.println("test directory");
-			
-			
-			
 			
 			//Background
 			JLabel myLabel;
@@ -223,20 +191,13 @@ public class Main extends JFrame{
 					
 				}
 			});
-			
-			
-			
-			
-			
-			
-			
+
 			//Layout
 			Container pane = getContentPane();
 			GroupLayout gl = new GroupLayout(pane);
 			pane.setLayout(null);
 			pane.add(rpsButton);
 			pane.add(memoryButton);
-			//pane.add(titlePanel);
 			pane.add(_uhrzeitLabel);
 			pane.add(_dateLabel);
 			pane.add(button);
@@ -248,14 +209,12 @@ public class Main extends JFrame{
 			
 			gl.setVerticalGroup(gl.createSequentialGroup().addComponent(button));
 			gl.setHorizontalGroup(gl.createSequentialGroup().addComponent(button));
-			
 			gl.setAutoCreateContainerGaps(true);
 		
 			
 		}
 
 		//Uhrzeit setter
-		
 		public void updateTimeLabel()
 		{
 			var now = new Date();
@@ -310,30 +269,5 @@ public class Main extends JFrame{
 			
 		}
 
-//		public static Font loadFont(String filename, float size)throws Exception {
-//	        InputStream stream = loader.getResource(resources + filename).openStream();
-//	        Font font = Font.createFont(Font.TRUETYPE_FONT, stream);
-//	        return font.deriveFont(size);
-//		}
+    }
 		
-
-//		    public static Font CustomFont(String path) {
-//		        Font customFont = loadFont(path, 24f);
-//		        System.out.println(customFont == null);
-//		        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-//		        ge.registerFont(customFont);
-//		        return customFont;
-//
-//		    }
-//		    public static Font loadFont(String path, float size){
-//		        try {
-//		            Font myFont = Font.createFont(Font.TRUETYPE_FONT, Launcher.class.getResourceAsStream(path));
-//		            return myFont.deriveFont(Font.PLAIN, size);
-//		        } catch (FontFormatException | IOException e) {
-//		            e.printStackTrace();
-//		            System.exit(1);
-//		        }
-//		        return null;
-//		    }
-		
-	}
