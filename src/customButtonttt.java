@@ -36,7 +36,6 @@ public class customButtonttt extends JButton{
 		this.setName(name);
 		this.setForeground(Color.CYAN);
 		this.setBackground(Color.BLACK);
-//		//this.setOpaque(true);
 		this.setSize(150,150);
 		this.setLocation(locX,locY);
 		setContentAreaFilled(false);
@@ -87,7 +86,6 @@ public class customButtonttt extends JButton{
 				}				
 				
 				//einzelspieler
-				
 				if(ttt.einzelspielerbool && ttt.gameRunning == true)
 				{
 					if(ttt.einzelspieler_player1)
