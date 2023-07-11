@@ -240,13 +240,13 @@ public class ticTacToe extends JFrame
 			_xGreenButtonIcon = new ImageIcon(xGreenImg);
 			_oGreenButtonIcon = new ImageIcon(oGreenImg);
 			
-			var mRes = getClass().getResource("file");
-			var mImg = ImageIO.read(mRes);
-			_mButtonIcon = new ImageIcon(mImg);
+			//var mRes = getClass().getResource("file");
+			//var mImg = ImageIO.read(mRes);
+			//_mButtonIcon = new ImageIcon(mImg);
 			
-			var sRes = getClass().getResource("file");
-			var sImg = ImageIO.read(sRes);
-			_sButtonIcon = new ImageIcon(sImg);
+			//var sRes = getClass().getResource("file");
+			//var sImg = ImageIO.read(sRes);
+			//_sButtonIcon = new ImageIcon(sImg);
 			
  		}
  		catch (IOException e) {
