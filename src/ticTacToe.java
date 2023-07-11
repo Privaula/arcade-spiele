@@ -228,10 +228,10 @@ public class ticTacToe extends JFrame
  			var gridRes = getClass().getResource("pictures/ticTacToe_grid.png");
  			var gridImg = ImageIO.read(gridRes);
  			_grid = new ImageIcon(gridImg);
-			var xRes = getClass().getResource("pictures/ticTacToe_x.png");
-			var oRes = getClass().getResource("pictures/ticTacToe_o.png");
-			var xGreenRes = getClass().getResource("pictures/ticTacToe_x_green.png");
-			var oGreenRes = getClass().getResource("pictures/ticTacToe_o_green.png");
+			var xRes = getClass().getResource("pictures/xSchwarz.png");
+			var oRes = getClass().getResource("pictures/kreisSchwarz.png");
+			var xGreenRes = getClass().getResource("pictures/kreisGrun.png");
+			var oGreenRes = getClass().getResource("pictures/xGrun.png");
 			var xImg = ImageIO.read(xRes);
 			var oImg = ImageIO.read(oRes);
 			var xGreenImg = ImageIO.read(xGreenRes);
