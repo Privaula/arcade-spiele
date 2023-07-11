@@ -50,20 +50,21 @@ public class ticTacToe extends JFrame
 	private java.net.URL ticTacToe_o 		=	Main.class.getResource("pictures\\ticTacToe_o.png");
 	private java.net.URL ticTacToe_x_green 	= 	Main.class.getResource("pictures\\ticTacToe_x_green.png");
 	private java.net.URL ticTacToe_x	 	= 	Main.class.getResource("pictures\\ticTacToe_x.png");
-	//Icon icon = new ImageIcon(ticTacToe_o_green);
-	//Icon icon2 = new ImageIcon("pictures/ticTacToe_x.png");
+	
 	Icon _xButtonIcon;
 	Icon _oButtonIcon;
 	Icon _xGreenButtonIcon;
 	Icon _oGreenButtonIcon;
-	Icon _grid;
+	Icon _mButtonIcon;
+	Icon _sButtonIcon;
 	
  	public void ticTacToe() 
 	{
- 		loadImages();
+ 		//
+ 		//buttons icons statt text(optional)
+ 		//
  		
- 		//random SpielerTurn
- 		//einzelspieler_spielerTurn = rd.nextBoolean();
+ 		loadImages();
  		einzelspieler_player1 = true;
  		
 		//JFrame erstellen
@@ -74,9 +75,7 @@ public class ticTacToe extends JFrame
 		jf.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		jf.setVisible(true);
 		
-		
-		
-		//test JLabel
+		//Grid TicTacToe erstellen
 		var gridPart1 = new JLabel();
 		gridPart1.setOpaque(true);
 		gridPart1.setLocation(250,245);
@@ -110,7 +109,6 @@ public class ticTacToe extends JFrame
 		ImageIcon backButtonIcon = new ImageIcon(backButtonIconURL);
 		JButton zurückButton = new JButton(backButtonIcon);
 		zurückButton.setBounds(20, 20, buttonBreite, buttonHöhe);
-//		zurückButton.setAction(backButtonIconURL)
 		zurückButton.setBorder(null);
 		zurückButton.setContentAreaFilled(false);
 		zurückButton.addActionListener(new ActionListener() {
@@ -120,6 +118,7 @@ public class ticTacToe extends JFrame
 				jf.setVisible(false);
 			}
 		});
+		
 		//Neues SpielButton
 		java.net.URL retryButtonIconURL = Main.class.getResource("pictures\\retryButton.png");
 		ImageIcon retryButtonIcon = new ImageIcon(retryButtonIconURL);
@@ -132,7 +131,6 @@ public class ticTacToe extends JFrame
 		nochmalButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//		 		System.out.println("actionlistener gestarted");
 				tttReset();
 			}
 		});
@@ -149,7 +147,10 @@ public class ticTacToe extends JFrame
 		jf.setIconImage(taskbarIcon.getImage());
 
 		//einzelspieler button
-		var einzelspieler = new JButton("einzelspieler");
+		java.net.URL einzelspielerButtonIconURL = Main.class.getResource("pictures\\");
+		ImageIcon einzelspielerButtonIcon = new ImageIcon(einzelspielerButtonIconURL);
+		var einzelspieler = new JButton();
+		einzelspieler.setName("einzelspieler");
 		einzelspieler.setBounds(900,20,120,40);
 		einzelspieler.setText("Einzelspieler");
 		einzelspieler.setBackground(Color.decode("#1A5276"));
@@ -158,7 +159,8 @@ public class ticTacToe extends JFrame
 		einzelspieler.setBorder(null);
 		
 		//mahrspieler Button
-		var mehrspieler = new JButton("mehrspieler");
+		var mehrspieler = new JButton();
+		mehrspieler.setName("mehrspieler");
 		mehrspieler.setBounds(1020,20,120,40);
 		mehrspieler.setText("Mehrspieler");
 		mehrspieler.setBackground(Color.decode("#1F618D"));
@@ -167,9 +169,9 @@ public class ticTacToe extends JFrame
 		mehrspieler.setBorder(null);
 		
 
-		button1 = new customButtonttt(250, 80, this, "button1");
-		button2 = new customButtonttt( 450, 80,this, "button2");
-		button3 = new customButtonttt( 650, 80,this, "button3");
+		button1 = new customButtonttt(250,  80,this, "button1");
+		button2 = new customButtonttt(450,  80,this, "button2");
+		button3 = new customButtonttt(650,  80,this, "button3");
 		button4 = new customButtonttt(250, 280,this, "button4");
 		button5 = new customButtonttt(450, 280,this, "button5");
 		button6 = new customButtonttt(650, 280,this, "button6");
@@ -225,9 +227,6 @@ public class ticTacToe extends JFrame
  	{
  		try
  		{
- 			var gridRes = getClass().getResource("pictures/ticTacToe_grid.png");
- 			var gridImg = ImageIO.read(gridRes);
- 			_grid = new ImageIcon(gridImg);
 			var xRes = getClass().getResource("pictures/xSchwarz.png");
 			var oRes = getClass().getResource("pictures/kreisSchwarz.png");
 			var xGreenRes = getClass().getResource("pictures/kreisGrun.png");
@@ -240,6 +239,14 @@ public class ticTacToe extends JFrame
 			_oButtonIcon = new ImageIcon(oImg);
 			_xGreenButtonIcon = new ImageIcon(xGreenImg);
 			_oGreenButtonIcon = new ImageIcon(oGreenImg);
+			
+			var mRes = getClass().getResource("file");
+			var mImg = ImageIO.read(mRes);
+			_mButtonIcon = new ImageIcon(mImg);
+			
+			var sRes = getClass().getResource("file");
+			var sImg = ImageIO.read(sRes);
+			_sButtonIcon = new ImageIcon(sImg);
 			
  		}
  		catch (IOException e) {
@@ -265,11 +272,10 @@ public class ticTacToe extends JFrame
  			mehrspieler_player1 = true;
  			//button.setIcon(_oButtonIcon);
  		}
- 		//chooseField();
  		testGameOver();
  	}
- 	
  	public void pressedButtonEinzelspieler(int i, customButtonttt button)
+
  	{
  		if(einzelspieler_player1)
  		{
@@ -289,11 +295,7 @@ public class ticTacToe extends JFrame
 	 		}
  	}
  	
- 	
- 	
- 	
  	public void testGameOver()
- 	
  	{
 		if(fieldArray[0] == fieldArray[1] && fieldArray[0] == fieldArray[2] && fieldArray[0] != 0)
 		{
@@ -301,7 +303,6 @@ public class ticTacToe extends JFrame
 			{
 				System.out.println("Spieler1 gewinnt");
 				gameRunning = false;
-				//button1.setIcon();
 			}
 			else if(fieldArray[0] == 2)
 			{
@@ -405,7 +406,7 @@ public class ticTacToe extends JFrame
 			System.out.println("Unentscheiden");
 			gameRunning = false;
 		}
- 	}
+ 	}	
  	public void tttReset()
  	{
  		System.out.println("reset ttt");
@@ -432,6 +433,7 @@ public class ticTacToe extends JFrame
  			fieldArray[i] = 0;
  		}
  		mehrspieler_player1 = true;
+ 		einzelspieler_player1 = true;
  		nochmalButton.setVisible(false);
  		gameRunning = true;
  	}
@@ -439,12 +441,13 @@ public class ticTacToe extends JFrame
  	{
  		nochmalButton.setVisible(true);
  	}
- 	
  	public void chooseField()
  	{
  		int i = 0;
  		boolean b = false;
  		boolean cantWinOrLoose= false;
+ 		boolean f = false;
+ 		int n = 0;
  		
  		//versucht spiel zu gewinnen
  		if(fieldArray[0] == 2 && fieldArray[1] == 2  && fieldArray[2] == 0|| fieldArray[0] == 2 && fieldArray[2] == 2 && fieldArray[1] == 0|| fieldArray[1] == 2 && fieldArray[2] == 2 && fieldArray[0] == 0)					//horizontal erste Reihe
@@ -465,7 +468,6 @@ public class ticTacToe extends JFrame
  				fieldArray[2] = 2;
  				i = 2;
  			}
- 			//kann später auch ganz ans ende der methode gesetzt werden
  			pressField(i, b);
  		}
  		else if(fieldArray[3] == 2 && fieldArray[4] == 2  && fieldArray[5] == 0|| fieldArray[3] == 2 && fieldArray[5] == 2 && fieldArray[4] == 0|| fieldArray[4] == 2 && fieldArray[5] == 2 && fieldArray[3] == 0)				//horizontal zweite Reihe
@@ -769,56 +771,106 @@ public class ticTacToe extends JFrame
  		}
  		else
  		{
+ 			b = false;
  			cantWinOrLoose = true;
  		}
  		
- 		
- 		
- 		
- 		
- 		//schaut ecken
- 		//if(fieldArray[2] == 1 && fieldArray[4] == 1  && fieldArray[6] == 0|| fieldArray[2] == 1 && fieldArray[6] == 1 && fieldArray[4] == 0|| fieldArray[4] == 1 && fieldArray[6] == 1 && fieldArray[2] == 0)
+			
+		 if(cantWinOrLoose)
+		 {
+			 testGameOver();
+			 if(gameRunning== true)
+			 {
+				 switchAbrfage(n, i, b, cantWinOrLoose);
+			 }
+		 }
+		 	
  		
  		
  	}
- 	
+ 	private void switchAbrfage(int n, int i, boolean b, boolean cantWinOrLoose)
+ 	{
+ 		
+ 		n = rd.nextInt(9);
+ 		if(fieldArray[n] == 0)
+ 		{
+	 		switch(n)
+				{
+					case 0: i = n;
+							fieldArray[n] = 2;
+							break;
+					case 1: i = n;
+						fieldArray[n] = 2;
+						break;
+					case 2: i = n;
+						fieldArray[n] = 2;
+						break;
+					case 3: i = n;
+						fieldArray[n] = 2;
+						break;
+					case 4: i = n;
+						fieldArray[n] = 2;
+						break;
+					case 5: i = n;
+						fieldArray[n] = 2;
+						break;
+					case 6: i = n;
+						fieldArray[n] = 2;
+						break;
+					case 7: i = n;
+						fieldArray[n] = 2;
+						break;
+					case 8: i = n;
+						fieldArray[n] = 2;
+						break;
+				}
+			b = true;
+			pressField(i, b);
+			cantWinOrLoose = false;
+ 		}
+ 		else 
+ 		{
+ 			switchAbrfage(n, i, b, cantWinOrLoose);
+ 		}
+ 	} 		
  	private void pressField(int i, boolean b){
- 		
- 		switch(i)
- 		{
- 		case 0: 	//button1.setIcon(_oButtonIcon);
- 					button1.setText("o");
- 					break;
- 		case 1:		//button2.setIcon(_oButtonIcon);
- 					button2.setText("o");	
- 					break;
- 		case 2: 	//button3.setIcon(_oButtonIcon);
- 					button3.setText("o");
- 					break;
- 		case 3: 	//button4.setIcon(_oButtonIcon);
- 					button4.setText("o");
- 					break;
- 		case 4:		//button5.setIcon(_oButtonIcon);
- 					button5.setText("o");
- 					break;
- 		case 5: 	//button6.setIcon(_oButtonIcon);
- 					button6.setText("o");
- 					break;
- 		case 6: 	//button7.setIcon(_oButtonIcon);
- 					button7.setText("o");
- 					break;
- 		case 7: 	//button8.setIcon(_oButtonIcon);
- 					button8.setText("o");		
- 					break;
- 		case 8: 	//button9.setIcon(_oButtonIcon);
- 					button9.setText("o");
- 					break;
- 		}
- 		if(b)
- 		{
- 			einzelspieler_player1 = true;
- 		}
- 		testGameOver();
- 	}
  	
+ 			switch(i)
+ 	 		{
+ 	 		case 0: 	//button1.setIcon(_oButtonIcon);
+ 	 					button1.setText("o");
+ 	 					break;
+ 	 		case 1:		//button2.setIcon(_oButtonIcon);
+ 	 					button2.setText("o");	
+ 	 					break;
+ 	 		case 2: 	//button3.setIcon(_oButtonIcon);
+ 	 					button3.setText("o");
+ 	 					break;
+ 	 		case 3: 	//button4.setIcon(_oButtonIcon);
+ 	 					button4.setText("o");
+ 	 					break;
+ 	 		case 4:		//button5.setIcon(_oButtonIcon);
+ 	 					button5.setText("o");
+ 	 					break;
+ 	 		case 5: 	//button6.setIcon(_oButtonIcon);
+ 	 					button6.setText("o");
+ 	 					break;
+ 	 		case 6: 	//button7.setIcon(_oButtonIcon);
+ 	 					button7.setText("o");
+ 	 					break;
+ 	 		case 7: 	//button8.setIcon(_oButtonIcon);
+ 	 					button8.setText("o");		
+ 	 					break;
+ 	 		case 8: 	//button9.setIcon(_oButtonIcon);
+ 	 					button9.setText("o");
+ 	 					break;
+ 	 		}
+ 	 		if(b)
+ 	 		{
+ 	 			einzelspieler_player1 = true;
+ 	 			b = false;
+ 	 		}
+ 	 		testGameOver();
+ 		
+ 	}
 }		
