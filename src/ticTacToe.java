@@ -147,26 +147,35 @@ public class ticTacToe extends JFrame
 		jf.setIconImage(taskbarIcon.getImage());
 
 		//einzelspieler button
-		java.net.URL einzelspielerButtonIconURL = Main.class.getResource("pictures\\");
+		java.net.URL einzelspielerButtonIconURL = Main.class.getResource("pictures\\multiplayer.png");
 		ImageIcon einzelspielerButtonIcon = new ImageIcon(einzelspielerButtonIconURL);
-		var einzelspieler = new JButton();
+		var einzelspieler = new JButton(einzelspielerButtonIcon);
 		einzelspieler.setName("einzelspieler");
-		einzelspieler.setBounds(900,20,120,40);
-		einzelspieler.setText("Einzelspieler");
-		einzelspieler.setBackground(Color.decode("#1A5276"));
-		einzelspieler.setForeground(Color.white);
+		einzelspieler.setBounds(900,20,260,80);
+		//einzelspieler.setText("Einzelspieler");
+		//einzelspieler.setBackground(Color.decode("#1A5276"));
+		//einzelspieler.setForeground(Color.white);
 		einzelspieler.setFocusable(false);
 		einzelspieler.setBorder(null);
+		einzelspieler.setContentAreaFilled(false);
+		einzelspieler.setBackground(new Color(0,0,0,0));
+		einzelspieler.setVisible(false);
 		
 		//mahrspieler Button
-		var mehrspieler = new JButton();
+		java.net.URL mehrspielerButtonIconURL = Main.class.getResource("pictures\\singleplayer.png");
+		ImageIcon mehrspielerButtonIcon = new ImageIcon(mehrspielerButtonIconURL);
+		var mehrspieler = new JButton(mehrspielerButtonIcon);
 		mehrspieler.setName("mehrspieler");
-		mehrspieler.setBounds(1020,20,120,40);
-		mehrspieler.setText("Mehrspieler");
-		mehrspieler.setBackground(Color.decode("#1F618D"));
-		mehrspieler.setForeground(Color.white);
+		mehrspieler.setBounds(900,20,275,80);
+		//mehrspieler.setText("Mehrspieler");
+		//mehrspieler.setBackground(Color.decode("#1F618D"));
+		//mehrspieler.setForeground(Color.white);
 		mehrspieler.setFocusable(false);
 		mehrspieler.setBorder(null);
+		mehrspieler.setContentAreaFilled(false);
+		mehrspieler.setBackground(new Color(0,0,0,0));
+		mehrspieler.setVisible(true);
+		
 		
 
 		button1 = new customButtonttt(250,  80,this, "button1");
@@ -184,8 +193,10 @@ public class ticTacToe extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				tttReset();
-				einzelspieler.setBackground(Color.decode("#1A5276"));
-				mehrspieler.setBackground(Color.decode("#1F618D"));
+				//einzelspieler.setBackground(Color.decode("#1A5276"));
+				//mehrspieler.setBackground(Color.decode("#1F618D"));
+				einzelspieler.setVisible(false);
+				mehrspieler.setVisible(true);
 				einzelspielerbool = true;
 			}
 		});
@@ -193,8 +204,10 @@ public class ticTacToe extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				tttReset();
-				mehrspieler.setBackground(Color.decode("#1A5276"));
-				einzelspieler.setBackground(Color.decode("#1F618D"));
+				//mehrspieler.setBackground(Color.decode("#1A5276"));
+				//einzelspieler.setBackground(Color.decode("#1F618D"));
+				einzelspieler.setVisible(true);
+				mehrspieler.setVisible(false);
 				einzelspielerbool = false;
 			}
 		});
