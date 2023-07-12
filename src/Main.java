@@ -109,7 +109,7 @@ public class Main extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					m.memory();
+					random.random();
 				}
 			});
 			
