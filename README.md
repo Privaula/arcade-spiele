@@ -12,3 +12,4 @@ Have a good day!
 ![mainMenuSnapshot](https://github.com/Privaula/arcade-spiele/assets/43094366/353deae2-96ab-4a5c-b9fa-efe4ab7118ff)
 ![zahlenguesserSnapshot](https://github.com/Privaula/arcade-spiele/assets/43094366/14970c2d-828a-4a16-816d-a5e55f846090)
 ![rpsSnapshot](https://github.com/Privaula/arcade-spiele/assets/43094366/850530ec-91f5-444f-beaa-3586276b06b4)
+![tictactoeSnapshot](https://github.com/Privaula/arcade-spiele/assets/43094366/eafb732e-2938-45b3-844a-7aa86cdab7b3)
