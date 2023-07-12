@@ -20,7 +20,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
 public class ticTacToe extends JFrame 
@@ -45,6 +47,14 @@ public class ticTacToe extends JFrame
 	private customButtonttt button8;
 	private customButtonttt button9;
 	private JButton nochmalButton;
+	JTextArea winnerField;
+	JTextArea loserField;
+	JTextArea unendschiedenField;
+	JLabel myLabel;
+	Font font = new Font("Public Pixel", Font.PLAIN , 40);
+	Font unentschiedenFont = new Font("Public Pixel", Font.PLAIN , 30);
+	boolean runnableRunning = false;
+	
 	
 	private java.net.URL ticTacToe_o_green 	= 	Main.class.getResource("pictures\\ticTacToe_o_green.png");
 	private java.net.URL ticTacToe_o 		=	Main.class.getResource("pictures\\ticTacToe_o.png");
@@ -57,6 +67,7 @@ public class ticTacToe extends JFrame
 	Icon _oGreenButtonIcon;
 	Icon _mButtonIcon;
 	Icon _sButtonIcon;
+	private JFrame jf;
 	
  	public void ticTacToe() 
 	{
@@ -67,13 +78,13 @@ public class ticTacToe extends JFrame
  		loadImages();
  		einzelspieler_player1 = true;
  		
-		//JFrame erstellen
-		JFrame jf = new JFrame();
+		jf = new JFrame();
 		jf.setTitle("Arcade Spiele - TicTacToe");
 		jf.setSize(1280, 720);
 		jf.setLocationRelativeTo(null);
 		jf.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		jf.setVisible(true);
+		jf.setResizable(false);
 		
 		//Grid TicTacToe erstellen
 		var gridPart1 = new JLabel();
@@ -104,6 +115,35 @@ public class ticTacToe extends JFrame
 		Font schrift = new Font ("Rockwell", Font.PLAIN , 50);
 		Font eingabeSchrift = new Font("Rockwell", Font.BOLD, 120);
 				
+		//Gewinnernachricht Textfield
+		winnerField = new JTextArea();
+		winnerField.setBounds(870, 270, 370, 100);
+		Font winnerFont = new Font("Impact", ABORT, 60);
+		winnerField.setFont(font);
+		winnerField.setEditable(false);
+		winnerField.setForeground(Color.GREEN);
+		winnerField.setBackground(new Color(0,0,0,0));
+		winnerField.setVisible(false);
+		
+
+		//Losernachricht Textfield
+		loserField = new JTextArea();
+		loserField.setBounds(870, 370, 370, 100);
+		loserField.setFont(font);
+		loserField.setEditable(false);
+		loserField.setForeground(Color.RED);
+		loserField.setBackground(new Color(0,0,0,0));
+		loserField.setVisible(false);
+		
+		//Unendschiedennachricht Textfield
+		unendschiedenField = new JTextArea();
+		unendschiedenField.setBounds(850, 350, 390, 100);
+		unendschiedenField.setFont(unentschiedenFont);
+		unendschiedenField.setEditable(false);
+		unendschiedenField.setForeground(Color.YELLOW);
+		unendschiedenField.setBackground(new Color(0,0,0,0));
+		unendschiedenField.setVisible(false);
+		
 		//Zurück Button
 		java.net.URL backButtonIconURL = Main.class.getResource("pictures\\backButton.png");
 		ImageIcon backButtonIcon = new ImageIcon(backButtonIconURL);
@@ -138,7 +178,7 @@ public class ticTacToe extends JFrame
 		//Background
 		java.net.URL backgroundURL = Main.class.getResource("pictures\\tictactoeBackground.png");
 		ImageIcon background = new ImageIcon(backgroundURL);
-		JLabel myLabel = new JLabel(background);
+		myLabel = new JLabel(background);
 		myLabel.setSize(1280, 720);
 		
 		//ICON
@@ -176,8 +216,7 @@ public class ticTacToe extends JFrame
 		mehrspieler.setBackground(new Color(0,0,0,0));
 		mehrspieler.setVisible(true);
 		
-		
-
+	
 		button1 = new customButtonttt(250,  80,this, "button1");
 		button2 = new customButtonttt(450,  80,this, "button2");
 		button3 = new customButtonttt(650,  80,this, "button3");
@@ -231,6 +270,9 @@ public class ticTacToe extends JFrame
 		jf.add(gridPart2);
 		jf.add(gridPart3);
 		jf.add(gridPart4);
+		jf.add(winnerField);
+		jf.add(loserField);
+		jf.add(unendschiedenField);
 		jf.add(myLabel);
 			
 		
@@ -273,174 +315,314 @@ public class ticTacToe extends JFrame
  		
  		if(mehrspieler_player1)
  		{
- 			button.setText("x");
  			fieldArray[i] = 1;
  			mehrspieler_player1 = false;
- 			//button.setIcon(_xButtonIcon);
+ 			button.setText(null);
+ 			button.setIcon(_xButtonIcon);
  		}
  		else if(!mehrspieler_player1)
  		{
- 			button.setText("o");
  			fieldArray[i] = 2;
  			mehrspieler_player1 = true;
- 			//button.setIcon(_oButtonIcon);
+ 			button.setText(null);
+ 			button.setIcon(_oButtonIcon);
  		}
  		testGameOver();
  	}
  	public void pressedButtonEinzelspieler(int i, customButtonttt button)
 
  	{
- 		if(einzelspieler_player1)
+ 		if(einzelspieler_player1 && !runnableRunning)
  		{
- 			button.setText("x");
  			fieldArray[i] = 1;
  			einzelspieler_player1 = false;
- 			//button.setIcon(_xButtonIcon);
- 			chooseField();
+ 			button.setText(null);
+ 			button.setIcon(_xButtonIcon);
+ 			
+ 			javax.swing.SwingUtilities.invokeLater(new Runnable() {
+				
+				@Override
+				public void run() {
+					runnableRunning = true;
+		 			chooseField();
+		 			runnableRunning = false;
+				}
+			});
+
  			
  		}
- 		else if(!einzelspieler_player1)
-	 		{
-	 			button.setText("o");
-	 			fieldArray[i] = 2;
-	 			einzelspieler_player1 = true;
-	 			//button.setIcon(_oButtonIcon);
-	 		}
  	}
  	
  	public void testGameOver()
  	{
+ 		int playerWon = 0;
 		if(fieldArray[0] == fieldArray[1] && fieldArray[0] == fieldArray[2] && fieldArray[0] != 0)
 		{
 			if(fieldArray[0] == 1)
 			{
-				System.out.println("Spieler1 gewinnt");
+				button1.setText(null);
+				button1.setIcon(_oGreenButtonIcon);
+				button2.setText(null);
+				button2.setIcon(_oGreenButtonIcon);
+				button3.setText(null);
+				button3.setIcon(_oGreenButtonIcon);
 				gameRunning = false;
+				playerWon= 1;
 			}
 			else if(fieldArray[0] == 2)
 			{
+				button1.setText(null);
+				button1.setIcon(_xGreenButtonIcon);
+				button2.setText(null);
+				button2.setIcon(_xGreenButtonIcon);
+				button3.setText(null);
+				button3.setIcon(_xGreenButtonIcon);
 				System.out.println("Spieler2 gewinnt");
 				gameRunning = false;
+				playerWon = 2;
 			}
 		}
 		else if(fieldArray[3] == fieldArray[4] && fieldArray[3] == fieldArray[5] && fieldArray[3] != 0)
 		{
 			if(fieldArray[3] == 1)
 			{
+				button4.setText(null);
+				button4.setIcon(_oGreenButtonIcon);
+				button5.setText(null);
+				button5.setIcon(_oGreenButtonIcon);
+				button6.setText(null);
+				button6.setIcon(_oGreenButtonIcon);
 				System.out.println("Spieler1 gewinnt");
 				gameRunning = false;
+				playerWon= 1;
 			}
 			else if(fieldArray[3] == 2)
 			{
 				System.out.println("Spieler2 gewinnt");
+				button4.setText(null);
+				button4.setIcon(_xGreenButtonIcon);
+				button5.setText(null);
+				button5.setIcon(_xGreenButtonIcon);
+				button6.setText(null);
+				button6.setIcon(_xGreenButtonIcon);
 				gameRunning = false;
+				playerWon= 2;
 			}
 		}
 		else if(fieldArray[6] == fieldArray[7] && fieldArray[6] == fieldArray[8] && fieldArray[6] != 0)
 		{
 			if(fieldArray[6] == 1)
 			{
+				button7.setText(null);
+				button7.setIcon(_oGreenButtonIcon);
+				button8.setText(null);
+				button8.setIcon(_oGreenButtonIcon);
+				button9.setText(null);
+				button9.setIcon(_oGreenButtonIcon);
 				System.out.println("Spieler1 gewinnt");
 				gameRunning = false;
+				playerWon= 1;
 			}
 			else if(fieldArray[6] == 2)
 			{
+				button7.setText(null);
+				button7.setIcon(_xGreenButtonIcon);
+				button8.setText(null);
+				button8.setIcon(_xGreenButtonIcon);
+				button9.setText(null);
+				button9.setIcon(_xGreenButtonIcon);
 				System.out.println("Spieler2 gewinnt");
 				gameRunning = false;
+				playerWon= 2;
 			}
 		}
 		else if(fieldArray[0] == fieldArray[4] && fieldArray[0] == fieldArray[8] && fieldArray[0] != 0)
 		{
 			if(fieldArray[0] == 1)
 			{
+				button1.setText(null);
+				button1.setIcon(_oGreenButtonIcon);
+				button5.setText(null);
+				button5.setIcon(_oGreenButtonIcon);
+				button9.setText(null);
+				button9.setIcon(_oGreenButtonIcon);
 				System.out.println("Spieler1 gewinnt");
 				gameRunning = false;
+				playerWon= 1;
 			}
 			else if(fieldArray[0] == 2)
 			{
+				button1.setText(null);
+				button1.setIcon(_xGreenButtonIcon);
+				button5.setText(null);
+				button5.setIcon(_xGreenButtonIcon);
+				button9.setText(null);
+				button9.setIcon(_xGreenButtonIcon);
 				System.out.println("Spieler2 gewinnt");
 				gameRunning = false;
+				playerWon= 2;
 			}
 		}
 		else if(fieldArray[2] == fieldArray[4] && fieldArray[2] == fieldArray[6] && fieldArray[2] != 0)
 		{
 			if(fieldArray[2] == 1)
 			{
+				button3.setText(null);
+				button3.setIcon(_oGreenButtonIcon);
+				button5.setText(null);
+				button5.setIcon(_oGreenButtonIcon);
+				button7.setText(null);
+				button7.setIcon(_oGreenButtonIcon);
 				System.out.println("Spieler1 gewinnt");
 				gameRunning = false;
+				playerWon= 1;
 			}
 			else if(fieldArray[2] == 2)
 			{
+				button3.setText(null);
+				button3.setIcon(_xGreenButtonIcon);
+				button5.setText(null);
+				button5.setIcon(_xGreenButtonIcon);
+				button7.setText(null);
+				button7.setIcon(_xGreenButtonIcon);
 				System.out.println("Spieler2 gewinnt");
 				gameRunning = false;
+				playerWon= 2;
 			}
 		}
 		else if(fieldArray[0] == fieldArray[3] && fieldArray[0] == fieldArray[6] && fieldArray[0] != 0)
 		{
 			if(fieldArray[0] == 1)
 			{
+				button1.setText(null);
+				button1.setIcon(_oGreenButtonIcon);
+				button4.setText(null);
+				button4.setIcon(_oGreenButtonIcon);
+				button7.setText(null);
+				button7.setIcon(_oGreenButtonIcon);
 				System.out.println("Spieler1 gewinnt");
 				gameRunning = false;
+				playerWon= 1;
 			}
 			else if(fieldArray[0] == 2)
 			{
+				button1.setText(null);
+				button1.setIcon(_xGreenButtonIcon);
+				button4.setText(null);
+				button4.setIcon(_xGreenButtonIcon);
+				button7.setText(null);
+				button7.setIcon(_xGreenButtonIcon);
 				System.out.println("Spieler2 gewinnt");
 				gameRunning = false;
+				playerWon= 2;
 			}
 		}
 		else if(fieldArray[1] == fieldArray[4] && fieldArray[1] == fieldArray[7] && fieldArray[1] != 0)
 		{
 			if(fieldArray[1] == 1)
 			{
+				button2.setText(null);
+				button2.setIcon(_oGreenButtonIcon);
+				button5.setText(null);
+				button5.setIcon(_oGreenButtonIcon);
+				button8.setText(null);
+				button8.setIcon(_oGreenButtonIcon);
 				System.out.println("Spieler1 gewinnt");
 				gameRunning = false;
+				playerWon= 1;
 			}
 			else if(fieldArray[1] == 2)
 			{
+				button2.setText(null);
+				button2.setIcon(_xGreenButtonIcon);
+				button5.setText(null);
+				button5.setIcon(_xGreenButtonIcon);
+				button8.setText(null);
+				button8.setIcon(_xGreenButtonIcon);
 				System.out.println("Spieler2 gewinnt");
 				gameRunning = false;
+				playerWon= 2;
 			}
 		}
 		else if(fieldArray[2] == fieldArray[5] && fieldArray[2] == fieldArray[8] && fieldArray[2] != 0)
 		{
 			if(fieldArray[2] == 1)
 			{
+				button3.setText(null);
+				button3.setIcon(_oGreenButtonIcon);
+				button6.setText(null);
+				button6.setIcon(_oGreenButtonIcon);
+				button9.setText(null);
+				button9.setIcon(_oGreenButtonIcon);
 				System.out.println("Spieler1 gewinnt");
 				gameRunning = false;
+				playerWon= 1;
 			}
 			else if(fieldArray[2] == 2)
 			{
+				button3.setText(null);
+				button3.setIcon(_xGreenButtonIcon);
+				button6.setText(null);
+				button6.setIcon(_xGreenButtonIcon);
+				button9.setText(null);
+				button9.setIcon(_xGreenButtonIcon);
 				System.out.println("Spieler2 gewinnt");
 				gameRunning = false;
+				playerWon= 2;
 			}
 		}
 		else if(fieldArray[0] != 0 && fieldArray[1] != 0 && fieldArray[2] != 0 && fieldArray[3] != 0 && fieldArray[4] != 0 && fieldArray[5] != 0 && fieldArray[6] != 0 && fieldArray[7] != 0 && fieldArray[8] != 0)
 		{
 			System.out.println("Unentscheiden");
 			gameRunning = false;
+			playerWon= 3;
 		}
+		else {return;}
+		if(playerWon != 3)
+		{
+			if(playerWon == 1)
+			{
+				winnerField.setText("Winner: x ");
+				loserField.setText("Looser: o ");
+			}
+			else 
+			{
+				winnerField.setText("Winner: o ");
+				loserField.setText("Looser: x ");
+			}
+			winnerField.setVisible(true);
+			loserField.setVisible(true);
+			myLabel.setSize(1280, 721);
+			myLabel.setSize(1280,720);
+		}
+		else
+		{
+			unendschiedenField.setText("Unentschieden");
+			unendschiedenField.setVisible(true);
+		}
+		
  	}	
  	public void tttReset()
  	{
  		System.out.println("reset ttt");
  		button1.setIcon(null);
- 		button1.setText(" ");
+ 		button1.setText(null);
  		button2.setIcon(null);
- 		button2.setText(" ");
+ 		button2.setText(null);
  		button3.setIcon(null);
- 		button3.setText(" ");
+ 		button3.setText(null);
  		button4.setIcon(null);
- 		button4.setText(" ");
+ 		button4.setText(null);
  		button5.setIcon(null);
- 		button5.setText(" ");
+ 		button5.setText(null);
  		button6.setIcon(null);
- 		button6.setText(" ");
+ 		button6.setText(null);
  		button7.setIcon(null);
- 		button7.setText(" ");
+ 		button7.setText(null);
  		button8.setIcon(null);
- 		button8.setText(" ");
+ 		button8.setText(null);
  		button9.setIcon(null);
- 		button9.setText(" ");
+ 		button9.setText(null);
  		for(int i = 0; i < 9; i++)
  		{
  			fieldArray[i] = 0;
@@ -449,6 +631,9 @@ public class ticTacToe extends JFrame
  		einzelspieler_player1 = true;
  		nochmalButton.setVisible(false);
  		gameRunning = true;
+ 		winnerField.setVisible(false);
+ 		loserField.setVisible(false);
+ 		unendschiedenField.setVisible(false);
  	}
  	public void nochmalButtonVisible()
  	{
@@ -848,34 +1033,49 @@ public class ticTacToe extends JFrame
  	} 		
  	private void pressField(int i, boolean b){
  	
+ 		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
  			switch(i)
  	 		{
  	 		case 0: 	//button1.setIcon(_oButtonIcon);
- 	 					button1.setText("o");
+ 	 					button1.setText(null);
+ 	 					button1.setIcon(_oButtonIcon);
  	 					break;
  	 		case 1:		//button2.setIcon(_oButtonIcon);
- 	 					button2.setText("o");	
+ 	 					button2.setText(null);
+ 	 					button2.setIcon(_oButtonIcon);	
  	 					break;
  	 		case 2: 	//button3.setIcon(_oButtonIcon);
- 	 					button3.setText("o");
+ 	 					button3.setText(null);
+ 	 					button3.setIcon(_oButtonIcon);
  	 					break;
  	 		case 3: 	//button4.setIcon(_oButtonIcon);
- 	 					button4.setText("o");
+ 	 					button4.setText(null);
+ 	 					button4.setIcon(_oButtonIcon);
  	 					break;
  	 		case 4:		//button5.setIcon(_oButtonIcon);
- 	 					button5.setText("o");
+ 	 					button5.setText(null);
+ 	 					button5.setIcon(_oButtonIcon);
  	 					break;
  	 		case 5: 	//button6.setIcon(_oButtonIcon);
- 	 					button6.setText("o");
+ 	 					button6.setText(null);
+ 	 					button6.setIcon(_oButtonIcon);
  	 					break;
  	 		case 6: 	//button7.setIcon(_oButtonIcon);
- 	 					button7.setText("o");
+ 	 					button7.setText(null);
+ 	 					button7.setIcon(_oButtonIcon);
  	 					break;
  	 		case 7: 	//button8.setIcon(_oButtonIcon);
- 	 					button8.setText("o");		
+ 	 					button8.setText(null);
+ 	 					button8.setIcon(_oButtonIcon);		
  	 					break;
  	 		case 8: 	//button9.setIcon(_oButtonIcon);
- 	 					button9.setText("o");
+ 	 					button9.setText(null);
+ 	 					button9.setIcon(_oButtonIcon);
  	 					break;
  	 		}
  	 		if(b)
