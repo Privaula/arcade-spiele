@@ -54,7 +54,7 @@ public class ticTacToe extends JFrame
 	Font font = new Font("Public Pixel", Font.PLAIN , 40);
 	Font unentschiedenFont = new Font("Public Pixel", Font.PLAIN , 30);
 	boolean runnableRunning = false;
-	
+	boolean gameOver = false;
 	
 	private java.net.URL ticTacToe_o_green 	= 	Main.class.getResource("pictures\\ticTacToe_o_green.png");
 	private java.net.URL ticTacToe_o 		=	Main.class.getResource("pictures\\ticTacToe_o.png");
@@ -580,6 +580,7 @@ public class ticTacToe extends JFrame
 		else {return;}
 		if(playerWon != 3)
 		{
+			gameOver=true;
 			if(playerWon == 1)
 			{
 				winnerField.setText("Winner: x ");
@@ -597,6 +598,7 @@ public class ticTacToe extends JFrame
 		}
 		else
 		{
+			gameOver=true;
 			unendschiedenField.setText("Unentschieden");
 			unendschiedenField.setVisible(true);
 		}
@@ -646,7 +648,9 @@ public class ticTacToe extends JFrame
  		boolean cantWinOrLoose= false;
  		boolean f = false;
  		int n = 0;
- 		
+ 		testGameOver();
+ 		if(!gameOver)
+ 		{
  		//versucht spiel zu gewinnen
  		if(fieldArray[0] == 2 && fieldArray[1] == 2  && fieldArray[2] == 0|| fieldArray[0] == 2 && fieldArray[2] == 2 && fieldArray[1] == 0|| fieldArray[1] == 2 && fieldArray[2] == 2 && fieldArray[0] == 0)					//horizontal erste Reihe
  		{
@@ -984,7 +988,7 @@ public class ticTacToe extends JFrame
 		 }
 		 	
  		
- 		
+ 		}
  	}
  	private void switchAbrfage(int n, int i, boolean b, boolean cantWinOrLoose)
  	{
