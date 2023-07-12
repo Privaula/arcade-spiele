@@ -167,6 +167,7 @@ public class zahlenguesser extends JFrame {
 				if(convertGuess < random && convertGuess > 0) {hilfeLabel.setText("Die Zahl ist größer");
 											convertGuess = 0;
 											tfEingabe.setText(null);}
+				tfEingabe.requestFocus();
 				}
 
 			
